@@ -27,5 +27,10 @@ namespace BLL
         {
             return _courseRepository.GetById(id);
         }
+
+        public bool Update(Course course)
+        {
+            return _courseRepository.Update(course);
+        }
     }
 }

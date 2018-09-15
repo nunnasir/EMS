@@ -17,7 +17,8 @@ namespace Models
         }
 
         public int Id { get; set; }
-        public Organization Organization { get; set; }
+        //public Organization Organization { get; set; }
+        public int OrganizationId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string Duration { get; set; }

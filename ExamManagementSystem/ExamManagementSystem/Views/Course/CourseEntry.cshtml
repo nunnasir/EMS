@@ -1,7 +1,7 @@
 ﻿
 @using System.Web.Mvc.Html
 @using Models
-@model  Models.Course
+@model  Course
 
 
 @{
@@ -32,7 +32,7 @@
                     <label for="Organization.Id" class="col-md-2 control-label">Organization</label>
 
                     <div class="col-md-10">
-                        @Html.DropDownListFor(c=>c.Organization.Id, Model.OrganizationListItem, new{@class="form-control"})
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new { @class = "form-control" })
                     </div>
                 </div>
 

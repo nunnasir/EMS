@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,15 @@ namespace Repository
         {
             Course course = db.Courses.Find(id);
             return course;
+        }
+
+
+        public bool Update(Course course)
+        {
+            db.Courses.Attach(course);
+            db.Entry(course).State = EntityState.Modified;
+
+            return db.SaveChanges() > 0;
         }
     }
 }
