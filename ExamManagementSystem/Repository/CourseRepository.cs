@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseContexts;
 using Models;
+using Models.ViewModels;
 
 namespace Repository
 {
@@ -27,7 +28,7 @@ namespace Repository
 
         public Course GetById(int id)
         {
-            Course course = db.Courses.Find(id);
+            var course = db.Courses.Find(id);
             return course;
         }
 
@@ -38,6 +39,21 @@ namespace Repository
             db.Entry(course).State = EntityState.Modified;
 
             return db.SaveChanges() > 0;
+        }
+
+        public bool Deleted(int id)
+        {
+            Course course = new Course();
+            course = db.Courses.Where(c => c.Id == id).FirstOrDefault();
+            course.IsDeleted = true;
+
+            return Update(course);
+        }
+
+        public List<Course> GetAllCourseInfo()
+        {
+            var course = db.Courses.Where(c => c.IsDeleted == false).ToList();
+            return course;
         }
     }
 }

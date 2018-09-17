@@ -5,8 +5,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
 using BLL;
 using Models;
+using Models.ViewModels;
 
 namespace ExamManagementSystem.Controllers
 {
@@ -14,94 +16,121 @@ namespace ExamManagementSystem.Controllers
     {
         CourseManager _courseManager = new CourseManager();
 
+        public ActionResult Index()
+        {
+            var model = _courseManager.GetAllCourseInfo();
+            return View(model);
+        }
+
         //For Get Data
-        [HttpGet]
         public ActionResult CourseEntry()
         {
-            Course course = new Course();
-
-            GetDrodownSelectItemList(course);
-
-            return View(course);
-
+            var model = new CourseEntryVm();
+            model.OrganizationListItem = GetOrganizationList();
+            
+            return View(model);
         }
 
         //For Save Data
         [HttpPost]
-        public ActionResult CourseEntry(Course course)
+        public ActionResult CourseEntry(CourseEntryVm model)
         {
             if (ModelState.IsValid)
             {
-                bool isAdded = _courseManager.Add(course);
+                var course = Mapper.Map<Course>(model);
                 
-                //_courseManager.Add(course);
-
-
-                GetDrodownSelectItemList(course);
+                bool isAdded = _courseManager.Add(course);
                 
                 if (isAdded)
                 {
-                    //return RedirectToAction("CourseInformation", new RouteValueDictionary(new {Controller = "Course", Action = "CourseInformation", course.Id}));
-                    return RedirectToAction("CourseInformation",new RouteValueDictionary(new {course.Id}));
+                    return RedirectToAction("CourseInformation", new {course.Id });
                 }
-                
+
             }
 
             return View();
         }
 
         //For Edit
-        [HttpGet]
         public ActionResult CourseInformation(int id)
         {
             Course course = new Course();
 
             if (id > 0)
             {
-                course = _courseManager.GetById(id);
-            }
+                course =  _courseManager.GetById(id);
+                var model = Mapper.Map<CourseEntryVm>(course);
 
-            GetDrodownSelectItemList(course);
+                model.OrganizationListItem = GetOrganizationList();
 
-
-            return View(course);
-        }
-
-        //for update
-        public ActionResult CourseInformation(Course course)
-        {
-            if (ModelState.IsValid)
-            {
-                _courseManager.Update(course);
-
-                GetDrodownSelectItemList(course);
-
-                return View(course);
+                return View(model);
             }
 
             return View();
         }
 
+        //for update
+        [HttpPost]
+        public ActionResult CourseInformation(CourseEntryVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                var course = Mapper.Map<Course>(model);
+                bool isUpdate = _courseManager.Update(course);
+                if (isUpdate)
+                {
+                    return RedirectToAction("index");
+                }
+                model.OrganizationListItem = GetOrganizationList();
+            }
 
+            return View();
+        }
+
+        public ActionResult Delete(int id)
+        {
+
+            if (id > 0)
+            {
+                bool isDeleted = _courseManager.Deleted(id);
+                if (isDeleted)
+                {
+                    //return View("Index");
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Index");
+        }
 
 
         //Select DropDOwn Method
-        private void GetDrodownSelectItemList(Course course)
+        private List<SelectListItem> GetOrganizationList()
         {
-            List<Organization> organizations = _courseManager.GetAll();
-
-            List<SelectListItem> selectListItems = new List<SelectListItem>();
-
-            foreach (var organizationData in organizations)
-            {
-                SelectListItem selectListItem = new SelectListItem();
-                selectListItem.Text = organizationData.Name;
-                selectListItem.Value = organizationData.Id.ToString();
-
-                selectListItems.Add(selectListItem);
-            }
-
-            course.OrganizationListItem = selectListItems;
+             return _courseManager.GetAll()
+                .Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
         }
+
+
+        //Select DropDOwn Method
+        //private void GetDrodownSelectItemList(Course course)
+        //{
+        //    List<Organization> organizations = _courseManager.GetAll();
+
+        //    List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+            
+
+        //    foreach (var organizationData in organizations)
+        //    {
+        //        SelectListItem selectListItem = new SelectListItem();
+        //        selectListItem.Text = organizationData.Name;
+        //        selectListItem.Value = organizationData.Id.ToString();
+
+        //        selectListItems.Add(selectListItem);
+        //    }
+
+        //    course.OrganizationListItem = selectListItems;
+        //}
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using Models.ViewModels;
 using Repository;
 
 namespace BLL
@@ -31,6 +32,16 @@ namespace BLL
         public bool Update(Course course)
         {
             return _courseRepository.Update(course);
+        }
+
+        public List<Course> GetAllCourseInfo()
+        {
+            return _courseRepository.GetAllCourseInfo();
+        }
+
+        public bool Deleted(int id)
+        {
+            return _courseRepository.Deleted(id);
         }
     }
 }

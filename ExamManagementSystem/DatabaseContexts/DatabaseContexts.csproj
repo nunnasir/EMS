@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201809131930383_Course_Model_Updated.Designer.cs">
       <DependentUpon>201809131930383_Course_Model_Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809170751516_Update_Course_Add_IsDeleted_property.cs" />
+    <Compile Include="Migrations\201809170751516_Update_Course_Add_IsDeleted_property.Designer.cs">
+      <DependentUpon>201809170751516_Update_Course_Add_IsDeleted_property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809131930383_Course_Model_Updated.resx">
       <DependentUpon>201809131930383_Course_Model_Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170751516_Update_Course_Add_IsDeleted_property.resx">
+      <DependentUpon>201809170751516_Update_Course_Add_IsDeleted_property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
