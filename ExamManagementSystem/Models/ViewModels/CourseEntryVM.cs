@@ -10,6 +10,7 @@ namespace Models.ViewModels
     public class CourseEntryVm
     {
         public int Id { get; set; }
+        public Organization Organization { get; set; }
         public int OrganizationId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
@@ -20,5 +21,7 @@ namespace Models.ViewModels
 
 
         public List<SelectListItem> OrganizationListItem { get; set; }
+
+        
     }
 }

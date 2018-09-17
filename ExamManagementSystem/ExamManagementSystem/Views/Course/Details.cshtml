@@ -1,0 +1,125 @@
+﻿@model Models.ViewModels.CourseEntryVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6"><h1>@Model.Name</h1></div>
+        <div class="col-md-6 detail-top-right">
+            <p class="text-right">
+                @Html.ActionLink("Edit", "CourseInformation", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+
+    <hr/>
+    
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Basic Info</a></li>
+        <li role="presentation"><a href="#outline" aria-controls="outline" role="tab" data-toggle="tab">Outline</a></li>
+        <li role="presentation"><a href="#exam" aria-controls="exam" role="tab" data-toggle="tab">Exams</a></li>
+        <li role="presentation"><a href="#participant" aria-controls="participant" role="tab" data-toggle="tab">Participants</a></li>
+        <li role="presentation"><a href="#trainer" aria-controls="trainer" role="tab" data-toggle="tab">Trainers</a></li>
+    </ul>
+    
+    <!-- Tab Pans -->
+    <div class="tab-content">
+        <!-- Basic Content -->
+        <br/>
+
+        <div role="tabpanel" class="tab-pane fade in active" id="basic">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Duration)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Credit)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Credit)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tag)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tag)
+                </dd>
+
+            </dl>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="outline">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Outline)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Outline)
+                </dd>
+
+            </dl>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="exam"></div>
+        <div role="tabpanel" class="tab-pane fade" id="participant"></div>
+        <div role="tabpanel" class="tab-pane fade" id="trainer"></div>
+    </div>
+
+    
+
+    <p class="text-right">
+        @Html.ActionLink("Edit", "CourseInformation", new {id = Model.Id}) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

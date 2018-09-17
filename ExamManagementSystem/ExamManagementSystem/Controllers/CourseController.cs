@@ -22,7 +22,7 @@ namespace ExamManagementSystem.Controllers
             return View(model);
         }
 
-        //For Get Data
+        //Get Organization on COurse Entry
         public ActionResult CourseEntry()
         {
             var model = new CourseEntryVm();
@@ -31,7 +31,7 @@ namespace ExamManagementSystem.Controllers
             return View(model);
         }
 
-        //For Save Data
+        //Save New Course
         [HttpPost]
         public ActionResult CourseEntry(CourseEntryVm model)
         {
@@ -51,7 +51,7 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
-        //For Edit
+        //Edit Course
         public ActionResult CourseInformation(int id)
         {
             Course course = new Course();
@@ -69,7 +69,7 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
-        //for update
+        //Update Course
         [HttpPost]
         public ActionResult CourseInformation(CourseEntryVm model)
         {
@@ -87,6 +87,8 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
+
+        //Delete Course
         public ActionResult Delete(int id)
         {
 
@@ -101,6 +103,25 @@ namespace ExamManagementSystem.Controllers
             }
 
             return View("Index");
+        }
+
+
+        //View Course
+        public ActionResult Details(int id)
+        {
+            Course course = new Course();
+
+            if (id > 0)
+            {
+                course = _courseManager.GetById(id);
+                var model = Mapper.Map<CourseEntryVm>(course);
+
+                model.OrganizationListItem = GetOrganizationList();
+
+                return View(model);
+            }
+
+            return View();
         }
 
 
