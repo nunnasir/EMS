@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using Models.SearchCriteria;
 using Models.ViewModels;
 using Repository;
 
@@ -42,6 +43,12 @@ namespace BLL
         public bool Deleted(int id)
         {
             return _courseRepository.Deleted(id);
+        }
+
+        public List<Course> GetCourseBySearch(CourseSearchCriteria criteria)
+        {
+            List<Course> courses = _courseRepository.GetCourseBySearch(criteria);
+            return courses;
         }
     }
 }

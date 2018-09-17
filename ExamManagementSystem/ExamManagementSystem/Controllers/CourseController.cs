@@ -8,6 +8,7 @@ using System.Web.Routing;
 using AutoMapper;
 using BLL;
 using Models;
+using Models.SearchCriteria;
 using Models.ViewModels;
 
 namespace ExamManagementSystem.Controllers
@@ -16,9 +17,18 @@ namespace ExamManagementSystem.Controllers
     {
         CourseManager _courseManager = new CourseManager();
 
-        public ActionResult Index()
+
+        //INdex with Search Course
+        public ActionResult Index(CourseSearchCriteria model)
         {
-            var model = _courseManager.GetAllCourseInfo();
+            var courses = _courseManager.GetCourseBySearch(model);
+            
+            if (courses == null)
+            {
+                courses = new List<Course>();
+            }
+
+            model.Course = courses;
             return View(model);
         }
 
@@ -123,6 +133,8 @@ namespace ExamManagementSystem.Controllers
 
             return View();
         }
+
+        //Search Course
 
 
         //Select DropDOwn Method

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Models.Course>
+﻿@*@model IEnumerable<Models.Course>*@
+
+@model Models.SearchCriteria.CourseSearchCriteria
 
 @{
     Layout = null;
@@ -19,6 +21,16 @@
     <p>
         @Html.ActionLink("Create New", "CourseEntry")
     </p>
+    
+    @using (Html.BeginForm("Index", "Course", FormMethod.Get))
+    {
+        <div class="row">
+            <input id="searchTextbox" name="Name" class="form-group" type="text" />
+            <input id="searchTextbox" name="OrganizationId" class="form-group" type="text" />
+            <input id="searchButton" type="submit" value="Search" class="btn-success" />
+        </div>
+    }
+
     <br/>
     <table class="table">
         <tr>
@@ -43,7 +55,7 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Course)
         {
             <tr>
 

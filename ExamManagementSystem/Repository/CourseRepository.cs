@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseContexts;
 using Models;
+using Models.SearchCriteria;
 using Models.ViewModels;
 
 namespace Repository
@@ -54,6 +55,24 @@ namespace Repository
         {
             var course = db.Courses.Where(c => c.IsDeleted == false).ToList();
             return course;
+        }
+
+        public List<Course> GetCourseBySearch(CourseSearchCriteria criteria)
+        {
+            IQueryable<Course> courses = db.Courses.AsQueryable();
+
+            if (!string.IsNullOrEmpty(criteria.Name))
+            {
+                courses = courses.Where(c => c.Name.ToLower().Contains(criteria.Name.ToLower()));
+            }
+
+            if (criteria.OrganizationId > 0)
+            {
+                courses = courses.Where(c =>
+                    c.OrganizationId.ToString().ToLower().Contains(criteria.OrganizationId.ToString().ToLower()));
+            }
+
+            return courses.ToList();
         }
     }
 }
