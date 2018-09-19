@@ -18,20 +18,118 @@
 <div class="container">
     <h1 class="text-primary">All Courses Information</h1>
     <hr/>
-    <p>
-        @Html.ActionLink("Create New", "CourseEntry")
-    </p>
     
-    @using (Html.BeginForm("Index", "Course", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Course", FormMethod.Get, new {@class="form-horizontal"}))
     {
         <div class="row">
-            <input id="searchTextbox" name="Name" class="form-group" type="text" />
-            <input id="searchTextbox" name="OrganizationId" class="form-group" type="text" />
-            <input id="searchButton" type="submit" value="Search" class="btn-success" />
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Name" class="col-md-3 control-label">Name</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Name" class="form-control" type="text" placeholder="Name"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Code" class="col-md-3 control-label">Code</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Code" class="form-control" type="text" placeholder="Code"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Outline" class="col-md-3 control-label">Description</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Outline" class="form-control" type="text" placeholder="Description"/>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    <label for="Trainer" class="col-md-3 control-label">Trainer</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Trainer" class="form-control" type="text" placeholder="Trainer" disabled="disabled"/>
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <label for="Organization" class="col-md-3 control-label">Organization</label>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="DurationForm" class="col-md-3 control-label">Duratin</label>
+                            <div class="col-md-9">
+                                <input id="searchTextbox" name="DurationForm" class="form-control" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="DurationTo" class="col-md-3 control-label">To</label>
+                            <div class="col-md-9">
+                                <input id="searchTextbox" name="DurationTo" class="form-control" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="CreditForm" class="col-md-3 control-label">Credit</label>
+                            <div class="col-md-9">
+                                <input id="searchTextbox" name="CreditForm" class="form-control" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="CreditTo" class="col-md-3 control-label">To</label>
+                            <div class="col-md-9">
+                                <input id="searchTextbox" name="CreditTo" class="form-control" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Tag" class="col-md-4 control-label">Tag</label>
+                    <div class="col-md-8">
+                        <input id="searchTextbox" name="Tag" class="form-control" type="text" placeholder="Tag"/>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    <label for="Participants" class="col-md-4 control-label">Participants</label>
+                    <div class="col-md-8">
+                        <input id="searchTextbox" name="Participants" class="form-control" type="text" disabled="disabled"/>
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-lg-4 pull-right">
+                        <input id="searchButton" type="submit" value="Search" class="btn-success form-control"/>
+                    </div>
+                </div>
+
+            </div>
         </div>
+       
     }
 
-    <br/>
+    <hr/>
+    <p>
+        @Html.ActionLink("Create New Course", "CourseEntry")
+    </p>
+
     <table class="table">
         <tr>
             <th>

@@ -18,6 +18,12 @@ namespace Models.SearchCriteria
         public string Outline { get; set; }
         public string Tag { get; set; }
 
+        public int CreditForm { get; set; }
+        public int CreditTo { get; set; }
+
+
+
+
 
         public List<SelectListItem> OrganizationListItem { get; set; }
         public List<Course> Course { get; set; }

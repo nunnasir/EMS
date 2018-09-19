@@ -28,6 +28,8 @@ namespace ExamManagementSystem.Controllers
                 courses = new List<Course>();
             }
 
+            model.OrganizationListItem = GetOrganizationList();
+
             model.Course = courses;
             return View(model);
         }

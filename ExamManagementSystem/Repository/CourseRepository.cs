@@ -29,8 +29,11 @@ namespace Repository
 
         public Course GetById(int id)
         {
-            var course = db.Courses.Find(id);
-            return course;
+            //var course = db.Courses.Find(id);
+            //DOing Eagger Loading By Include
+            var crs = db.Courses.Where(c => c.Id == id).Include(c => c.Organization).FirstOrDefault();
+            //return course;
+            return crs;
         }
 
 
@@ -59,11 +62,32 @@ namespace Repository
 
         public List<Course> GetCourseBySearch(CourseSearchCriteria criteria)
         {
-            IQueryable<Course> courses = db.Courses.AsQueryable();
+            IQueryable<Course> courses = db.Courses.Where(c => c.IsDeleted == false).AsQueryable();
 
             if (!string.IsNullOrEmpty(criteria.Name))
             {
                 courses = courses.Where(c => c.Name.ToLower().Contains(criteria.Name.ToLower()));
+            }
+
+
+            if (!string.IsNullOrEmpty(criteria.Code))
+            {
+                courses = courses.Where(c => c.Code.ToLower().Contains(criteria.Code.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Outline))
+            {
+                courses = courses.Where(c => c.Outline.ToLower().Contains(criteria.Outline.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Outline))
+            {
+                courses = courses.Where(c => c.Outline.ToLower().Contains(criteria.Outline.ToLower()));
+            }
+
+            if (criteria.CreditForm > 0 && criteria.CreditTo > 0)
+            {
+                courses = courses.Where(c => c.Credit >= criteria.CreditForm && c.Credit <= criteria.CreditTo);
             }
 
             if (criteria.OrganizationId > 0)
