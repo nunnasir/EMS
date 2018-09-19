@@ -43,5 +43,10 @@ namespace Repository
             return organizations.ToList();
         }
 
+        public bool Add(Organization organization)
+        {
+            db.Organizations.Add(organization);
+            return db.SaveChanges() > 0;
+        }
     }
 }

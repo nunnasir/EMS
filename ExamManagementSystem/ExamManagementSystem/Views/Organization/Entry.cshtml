@@ -1,0 +1,93 @@
+﻿@model Models.ViewModels.OrganizationEntryVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entry</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    
+    <h1>Organization Entry Form</h1>
+    <hr/>
+    @Html.ValidationSummary(true, null, new {@class="text-danger"})
+    
+    <form method="post">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="Name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder="Name" })
+                    @Html.ValidationMessageFor(c=>c.Name, null, new{@class="text-danger"})
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="Code" class="col-md-2 control-label">Code</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code" })
+                    @Html.ValidationMessageFor(c => c.Code, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="Address" class="col-md-2 control-label">Address</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Address, new { @class = "form-control", placeholder = "Address" })
+                    @Html.ValidationMessageFor(c => c.Address, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="ContactNo" class="col-md-2 control-label">Contact No</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.ContactNo, new { @class = "form-control", placeholder = "Contact No" })
+                    @Html.ValidationMessageFor(c => c.ContactNo, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="About" class="col-md-2 control-label">About</label>
+                <div class="col-md-10">
+                    @Html.TextAreaFor(c => c.About, new { @class = "form-control", placeholder = "About", rows="3" })
+                    @Html.ValidationMessageFor(c => c.About, null, new {@class = "text-danger"})
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="pull-right btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+
+</body>
+</html>

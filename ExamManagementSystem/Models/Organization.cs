@@ -13,11 +13,16 @@ namespace Models
     public class Organization 
     {
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Code { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
+        [StringLength(11,MinimumLength = 11,ErrorMessage = "Contact Number Must be 11 Digit")]
         public string ContactNo { get; set; }
+        public string About { get; set; }
         public bool IsDeleted { get; set; }
 
         public List<Course> Courses { get; set; }

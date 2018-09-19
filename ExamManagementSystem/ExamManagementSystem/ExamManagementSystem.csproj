@@ -135,6 +135,7 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Organization\Entry.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

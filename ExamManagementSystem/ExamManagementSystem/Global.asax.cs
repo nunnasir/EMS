@@ -26,8 +26,9 @@ namespace ExamManagementSystem
             {
                 config.CreateMap<CourseEntryVm, Course>();
                 config.CreateMap<Course, CourseEntryVm>();
-                
-                //config.CreateMap<Organization, OrganizationSearchCriteria>();
+
+                config.CreateMap<Organization, OrganizationEntryVm>();
+                config.CreateMap<OrganizationEntryVm, Organization>();
 
             });
         }

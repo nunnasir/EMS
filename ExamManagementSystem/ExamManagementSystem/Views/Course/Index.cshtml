@@ -129,8 +129,8 @@
     <p>
         @Html.ActionLink("Create New Course", "CourseEntry")
     </p>
-
-    <table class="table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -184,6 +184,7 @@
         }
 
     </table>
+    </div>
 </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

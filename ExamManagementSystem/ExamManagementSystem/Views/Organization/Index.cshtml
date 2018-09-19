@@ -61,9 +61,10 @@
     <hr/>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Entry", "Organization")
     </p>
-    <table class="table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -110,6 +111,7 @@
         }
 
     </table>
+    </div>
 </div>
 </body>
 

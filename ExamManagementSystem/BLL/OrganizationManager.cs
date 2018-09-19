@@ -19,5 +19,9 @@ namespace BLL
             return organizations;
         }
 
+        public bool Add(Organization organization)
+        {
+            return _organizationRepository.Add(organization);
+        }
     }
 }

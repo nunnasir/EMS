@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201809190859021_Add_Deleted_On_Organization.Designer.cs">
       <DependentUpon>201809190859021_Add_Deleted_On_Organization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809191138433_Update_Organization_Model1.cs" />
+    <Compile Include="Migrations\201809191138433_Update_Organization_Model1.Designer.cs">
+      <DependentUpon>201809191138433_Update_Organization_Model1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809190859021_Add_Deleted_On_Organization.resx">
       <DependentUpon>201809190859021_Add_Deleted_On_Organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809191138433_Update_Organization_Model1.resx">
+      <DependentUpon>201809191138433_Update_Organization_Model1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
