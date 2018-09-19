@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201809170751516_Update_Course_Add_IsDeleted_property.Designer.cs">
       <DependentUpon>201809170751516_Update_Course_Add_IsDeleted_property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809190712377_Update_Organization_Model.cs" />
+    <Compile Include="Migrations\201809190712377_Update_Organization_Model.Designer.cs">
+      <DependentUpon>201809190712377_Update_Organization_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190859021_Add_Deleted_On_Organization.cs" />
+    <Compile Include="Migrations\201809190859021_Add_Deleted_On_Organization.Designer.cs">
+      <DependentUpon>201809190859021_Add_Deleted_On_Organization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809170751516_Update_Course_Add_IsDeleted_property.resx">
       <DependentUpon>201809170751516_Update_Course_Add_IsDeleted_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190712377_Update_Organization_Model.resx">
+      <DependentUpon>201809190712377_Update_Organization_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190859021_Add_Deleted_On_Organization.resx">
+      <DependentUpon>201809190859021_Add_Deleted_On_Organization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

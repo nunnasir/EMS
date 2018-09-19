@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
-namespace Models
+namespace Models.SearchCriteria
 {
-    public class Organization 
+    public class OrganizationSearchCriteria
     {
-        public int Id { get; set; }
 
         public string Name { get; set; }
         public string Code { get; set; }
@@ -21,6 +16,7 @@ namespace Models
         public bool IsDeleted { get; set; }
 
         public List<Course> Courses { get; set; }
-        
+        public List<Organization> OrganizationLists { get; set; }
+
     }
 }

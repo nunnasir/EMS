@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
 using Models;
+using Models.SearchCriteria;
 using Models.ViewModels;
 
 namespace ExamManagementSystem
@@ -25,6 +26,9 @@ namespace ExamManagementSystem
             {
                 config.CreateMap<CourseEntryVm, Course>();
                 config.CreateMap<Course, CourseEntryVm>();
+                
+                //config.CreateMap<Organization, OrganizationSearchCriteria>();
+
             });
         }
     }

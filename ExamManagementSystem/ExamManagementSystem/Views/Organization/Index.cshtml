@@ -1,0 +1,116 @@
+﻿@model Models.SearchCriteria.OrganizationSearchCriteria
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <h1 class="text-primary">All Organization Information</h1>
+    <hr />
+
+    @using (Html.BeginForm("Index", "Organization", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Name" class="col-md-3 control-label">Name</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Name" class="form-control" type="text" placeholder="Name" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Code" class="col-md-3 control-label">Code</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Code" class="form-control" type="text" placeholder="Code" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Address" class="col-md-3 control-label">Address</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Address" class="form-control" type="text" placeholder="Address" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ContactNo" class="col-md-3 control-label">Contact No</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="ContactNo" class="form-control" type="text" placeholder="ContactNo" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 pull-right">
+                        <input id="searchButton" type="submit" value="Search" class="btn-success form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+    <hr/>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses)
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model.OrganizationLists)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Courses.Count)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
+                    @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                    @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+</body>
+
+</html>

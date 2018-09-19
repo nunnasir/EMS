@@ -72,7 +72,9 @@
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchCriteria\CourseSearchCriteria.cs" />
+    <Compile Include="SearchCriteria\OrganizationSearchCriteria.cs" />
     <Compile Include="ViewModels\CourseEntryVm.cs" />
+    <Compile Include="ViewModels\OrganizationEntryVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
