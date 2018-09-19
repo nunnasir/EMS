@@ -112,6 +112,8 @@ namespace ExamManagementSystem.Controllers
                     //return View("Index");
                     return RedirectToAction("Index");
                 }
+
+                return RedirectToAction("Index");
             }
 
             return View("Index");

@@ -23,5 +23,20 @@ namespace BLL
         {
             return _organizationRepository.Add(organization);
         }
+
+        public Organization GetById(int id)
+        {
+            return _organizationRepository.GetById(id);
+        }
+
+        public bool Update(Organization organization)
+        {
+            return _organizationRepository.Update(organization);
+        }
+
+        public bool Delete(int id)
+        {
+            return _organizationRepository.Delete(id);
+        }
     }
 }

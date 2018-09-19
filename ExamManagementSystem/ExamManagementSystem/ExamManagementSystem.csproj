@@ -136,6 +136,7 @@
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\Entry.cshtml" />
+    <Content Include="Views\Organization\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

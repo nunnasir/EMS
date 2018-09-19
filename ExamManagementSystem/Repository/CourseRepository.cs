@@ -23,7 +23,7 @@ namespace Repository
 
         public List<Organization> GetAll()
         {
-            List<Organization> organization = db.Organizations.ToList();
+            List<Organization> organization = db.Organizations.Where(c => c.IsDeleted == false).ToList();
             return organization;
         }
 

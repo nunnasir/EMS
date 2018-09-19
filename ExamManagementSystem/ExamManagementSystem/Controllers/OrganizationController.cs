@@ -51,6 +51,55 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
+        //Edit Organization
+        public ActionResult Edit(int id)
+        {
+            Organization organization = new Organization();
+
+            if (id > 0)
+            {
+                organization = _organizationManager.GetById(id);
+                
+                var model = Mapper.Map<OrganizationEntryVm>(organization);
+
+                return View(model);
+            }
+
+            return View();
+        }
+
+
+        //Update Organization
+        [HttpPost]
+        public ActionResult Edit(OrganizationEntryVm model)
+        {
+            if (ModelState.IsValid) 
+            {
+                var organization = Mapper.Map<Organization>(model);
+                bool isUpdate = _organizationManager.Update(organization);
+                if (isUpdate)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View();
+        }
+
+        //Delete Organization
+        public ActionResult Delete(int id)
+        {
+            if (id > 0)
+            {
+                bool isDeleted = _organizationManager.Delete(id);
+                if (isDeleted)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
