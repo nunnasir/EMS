@@ -23,8 +23,12 @@ namespace Models.ViewModels
         public string ContactNo { get; set; }
         public string About { get; set; }
         public bool IsDeleted { get; set; }
+        public CourseEntryVm CourseVm { get; set; }
 
-        public List<Course> Courses { get; set; }
+        public List<CourseEntryVm> Courses { get; set; }
+
+
+        public List<Organization> Organizations { get; set; }
 
     }
 }

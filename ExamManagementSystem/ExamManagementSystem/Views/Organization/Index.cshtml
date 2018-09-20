@@ -61,7 +61,8 @@
     <hr/>
 
     <p>
-        @Html.ActionLink("Create New", "Entry", "Organization")
+        @*@Html.ActionLink("Create New", "Entry", "Organization")*@
+        @*@Html.ActionLink("Create New", "CourseEntry", "Course")*@
     </p>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
@@ -100,11 +101,13 @@
                     @Html.DisplayFor(modelItem => item.ContactNo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Courses.Count)
+                    @Html.ActionLink(item.Courses.Count.ToString(), "Index", "Course", new {id = item.Id }, null)
+
+                    @*@Html.ActionLink(item.Courses.Count.ToString(), "Index", "Course", new {id = "OrganizationId="+item.Id }, null)*@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new {id=item.Id}) |
-                    @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id}) |
                     @Html.ActionLink("Delete", "Delete", new { id=item.Id})
                 </td>
             </tr>

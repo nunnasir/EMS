@@ -1,0 +1,112 @@
+﻿
+@model Models.ViewModels.OrganizationEntryVm
+
+@{
+    Layout = null;
+
+    var name = "Edit";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <!--Header-->
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/Images/image-1.jpg" class="img-responsive img-thumbnail"/>
+            </div>
+            <div class="col-md-10">
+                <h1>@Model.Name</h1>
+                <p>@Model.About</p>
+            </div>
+        </div>
+        <hr/>
+        <!--Display Table-->
+        <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#courses" aria-controls="course" role="tab" data-toggle="tab">Course</a></li>
+                <li role="presentation"><a href="#trainers" aria-controls="trainers" role="tab" data-toggle="tab">Trainers</a></li>
+                <li role="presentation"><a href="#participants" aria-controls="participants" role="tab" data-toggle="tab">Participants</a></li>
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="courses">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseVm.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CourseVm.Code)
+                                </th>
+
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.CourseVm.Trainer.Count)*@
+                                    Trainer
+                                </th>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.CourseVm.Participant.Count)*@
+                                    Participant
+                                </th>
+                                
+                                <th>Action</th>
+                            </tr>
+                            @foreach (var item in Model.Courses)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(c => item.Name)
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(c => item.Code)
+                                    </td>
+                                    
+                                    
+                                    <td>
+                                        @*@Html.DisplayFor(c => item.Trainer)*@
+                                    </td>
+                                    
+                                    <td>
+                                        @*@Html.DisplayFor(c => item.Trainer)*@
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.ActionLink("Edit", "CourseInformation", "Course", new { id = item.Id }, null) |
+                                        @Html.ActionLink("Details", "Details", "Course", new { id=item.Id }, null) |
+                                        @Html.ActionLink("Delete", "Delete", "Course", new {  id=item.Id }, null) |
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="trainers">...</div>
+                <div role="tabpanel" class="tab-pane fade" id="participants">...</div>
+            </div>
+
+        </div>
+        
+        <!--Address And Contact-->
+        <br/>
+        <p class="text-center">Address : <span><i class="text-center">@Model.Address</i></span></p>
+        <p class="text-center">Mobile : <span><i class="text-center">@Model.ContactNo</i></span></p>
+    </div>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

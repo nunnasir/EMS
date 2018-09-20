@@ -54,7 +54,8 @@ namespace ExamManagementSystem.Controllers
         //Edit Organization
         public ActionResult Edit(int id)
         {
-            Organization organization = new Organization();
+            //Organization organization = new Organization();
+            var organization = new Organization();
 
             if (id > 0)
             {
@@ -98,6 +99,22 @@ namespace ExamManagementSystem.Controllers
                 }
             }
             return RedirectToAction("Index");
+        }
+
+        //Organization Details
+        public ActionResult Details(int id)
+        {
+            var organization = _organizationManager.GetById(id);
+
+            var org = Mapper.Map<OrganizationEntryVm>(organization);
+
+            return View(org);
+        }
+
+        //Course Edit
+        public ActionResult CourseEdit(int id)
+        {
+            return RedirectToAction("CourseInformation", "Course");
         }
 
 

@@ -18,6 +18,7 @@ namespace Models.ViewModels
         public int Credit { get; set; }
         public string Outline { get; set; }
         public string Tag { get; set; }
+        public bool IsDeleted { get; set; }
 
 
         public List<SelectListItem> OrganizationListItem { get; set; }

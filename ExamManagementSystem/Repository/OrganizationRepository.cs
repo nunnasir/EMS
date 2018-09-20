@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseContexts;
@@ -39,7 +40,15 @@ namespace Repository
                 organizations = organizations.Where(org => org.ContactNo.ToLower().Contains(criteria.ContactNo.ToLower()));
             }
 
-            return organizations.ToList();
+            var datalist =  organizations.ToList();
+
+            foreach (var organization in datalist)
+            {
+                organization.Courses = organization.Courses.Where(c => c.IsDeleted == false).ToList();
+            }
+
+            return datalist;
+
         }
 
         //Add Organization
@@ -52,11 +61,13 @@ namespace Repository
         //Find Organization By Id
         public Organization GetById(int id)
         {
-            var organization = db.Organizations.Find(id);
-            //var organization = db.Organizations.Where(c => c.Id == id).FirstOrDefault();
+            var organization = db.Organizations.Where(c => c.Id == id).FirstOrDefault();
+
+            db.Entry(organization).Collection(c => c.Courses).Query().Where(x => x.IsDeleted == false).Load();
 
             return organization;
         }
+
 
         //Update Organization
         public bool Update(Organization organization)
@@ -77,7 +88,7 @@ namespace Repository
                 organization.IsDeleted = true;
                 return Update(organization);
             }
-           
+
             return false;
         }
     }
