@@ -101,9 +101,8 @@
                     @Html.DisplayFor(modelItem => item.ContactNo)
                 </td>
                 <td>
-                    @Html.ActionLink(item.Courses.Count.ToString(), "Index", "Course", new {id = item.Id }, null)
-
-                    @*@Html.ActionLink(item.Courses.Count.ToString(), "Index", "Course", new {id = "OrganizationId="+item.Id }, null)*@
+                    @*@Html.ActionLink(item.Courses.Count.ToString(), "Index", "Course", new {id = item.Id }, null)*@
+                    <a href="~/Course?OrganizationId=@item.Id">@item.Courses.Count</a>
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new {id=item.Id}) |

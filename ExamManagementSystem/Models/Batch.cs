@@ -20,9 +20,6 @@ namespace Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime EndDate { get; set; }
 
-        [NotMapped]
-        public Course Course { get; set; }
-
         public List<Trainer> Trainers { get; set; }
         public List<Participant> Participants { get; set; }
     }
