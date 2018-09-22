@@ -1,0 +1,86 @@
+﻿
+@model Models.ViewModels.BatchEntryVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entry</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Batch Entry Form</h1>
+        <hr />
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+        
+        <form method="post">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="Organization" class="col-md-2 control-label">Organization</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new { @class = "form-control" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Course" class="col-md-2 control-label">Course</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="BatchNo" class="col-md-2 control-label">Batch No</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.BatchNo, new { @class = "form-control", placeholder = "Batch No" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Description" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(c => c.Description, new { @class = "form-control", placeholder = "Description" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="StartDate" class="col-md-2 control-label">Start Date</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.StartDate, new { type = "date", @class = "form-control" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="EndDate" class="col-md-2 control-label">End Date</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.EndDate, new{type="date", @class="form-control"})
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    
+        <script type="text/javascript">
+            $(function () { // will trigger when the document is ready
+                $('.date').datepicker(); //Initialise any date pickers
+            });
+        </script>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AppScript/BatchEntry/BatchDetail.js"></script>
+</body>
+</html>

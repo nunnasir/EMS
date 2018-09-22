@@ -30,6 +30,9 @@ namespace ExamManagementSystem
                 config.CreateMap<Organization, OrganizationEntryVm>();
                 config.CreateMap<OrganizationEntryVm, Organization>();
 
+                config.CreateMap<BatchEntryVm, Batch>();
+                config.CreateMap<Batch, BatchEntryVm>();
+
             });
         }
     }

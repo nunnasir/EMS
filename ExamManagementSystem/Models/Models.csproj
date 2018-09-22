@@ -68,11 +68,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Batch.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Organization.cs" />
+    <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCriteria\BatchSearchCriteria.cs" />
     <Compile Include="SearchCriteria\CourseSearchCriteria.cs" />
     <Compile Include="SearchCriteria\OrganizationSearchCriteria.cs" />
+    <Compile Include="Trainer.cs" />
+    <Compile Include="ViewModels\BatchEntryVm.cs" />
     <Compile Include="ViewModels\CourseEntryVm.cs" />
     <Compile Include="ViewModels\OrganizationEntryVm.cs" />
   </ItemGroup>

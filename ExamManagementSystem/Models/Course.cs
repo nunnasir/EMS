@@ -22,5 +22,7 @@ namespace Models
         public string Tag { get; set; }
         public bool IsDeleted { get; set; }
 
+        public List<Batch> Batches { get; set; }
+
     }
 }
