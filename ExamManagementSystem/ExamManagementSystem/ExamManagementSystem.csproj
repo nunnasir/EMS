@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\image-1.jpg" />
+    <Content Include="Scripts\AppScript\TrainerEntry\TrainerDetail.js" />
     <Content Include="Scripts\AppScript\BatchEntry\BatchDetail.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -125,6 +126,7 @@
     <Compile Include="Controllers\BatchController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,6 +146,7 @@
     <Content Include="Views\Batch\Entry.cshtml" />
     <Content Include="Views\Batch\Index.cshtml" />
     <Content Include="Views\Batch\Edit.cshtml" />
+    <Content Include="Views\Trainer\Entry.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

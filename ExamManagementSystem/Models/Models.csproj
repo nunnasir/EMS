@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Batch.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Participant.cs" />
@@ -76,10 +78,12 @@
     <Compile Include="SearchCriteria\BatchSearchCriteria.cs" />
     <Compile Include="SearchCriteria\CourseSearchCriteria.cs" />
     <Compile Include="SearchCriteria\OrganizationSearchCriteria.cs" />
+    <Compile Include="SearchCriteria\TrainerSearchCriteria.cs" />
     <Compile Include="Trainer.cs" />
     <Compile Include="ViewModels\BatchEntryVm.cs" />
     <Compile Include="ViewModels\CourseEntryVm.cs" />
     <Compile Include="ViewModels\OrganizationEntryVm.cs" />
+    <Compile Include="ViewModels\TrainerEntryVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

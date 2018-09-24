@@ -81,6 +81,22 @@
     <Compile Include="Migrations\201809241040396_Update_Batch_and_Course_Model.Designer.cs">
       <DependentUpon>201809241040396_Update_Batch_and_Course_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809241635294_Update_Trainer_Course_Participant_Model.cs" />
+    <Compile Include="Migrations\201809241635294_Update_Trainer_Course_Participant_Model.Designer.cs">
+      <DependentUpon>201809241635294_Update_Trainer_Course_Participant_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241811325_Add_Country_Update_Participants_Trainer_Model.cs" />
+    <Compile Include="Migrations\201809241811325_Add_Country_Update_Participants_Trainer_Model.Designer.cs">
+      <DependentUpon>201809241811325_Add_Country_Update_Participants_Trainer_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241831062_Add_Country_City_Model.cs" />
+    <Compile Include="Migrations\201809241831062_Add_Country_City_Model.Designer.cs">
+      <DependentUpon>201809241831062_Add_Country_City_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809241854488_add_isDeleted_on_Trainer_Participant.cs" />
+    <Compile Include="Migrations\201809241854488_add_isDeleted_on_Trainer_Participant.Designer.cs">
+      <DependentUpon>201809241854488_add_isDeleted_on_Trainer_Participant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -118,6 +134,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809241040396_Update_Batch_and_Course_Model.resx">
       <DependentUpon>201809241040396_Update_Batch_and_Course_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241635294_Update_Trainer_Course_Participant_Model.resx">
+      <DependentUpon>201809241635294_Update_Trainer_Course_Participant_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241811325_Add_Country_Update_Participants_Trainer_Model.resx">
+      <DependentUpon>201809241811325_Add_Country_Update_Participants_Trainer_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241831062_Add_Country_City_Model.resx">
+      <DependentUpon>201809241831062_Add_Country_City_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241854488_add_isDeleted_on_Trainer_Participant.resx">
+      <DependentUpon>201809241854488_add_isDeleted_on_Trainer_Participant.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

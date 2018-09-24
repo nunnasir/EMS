@@ -13,6 +13,7 @@ namespace Models
     {
         public int Id { get; set; }
         public Organization Organization { get; set; }
+        [Required]
         public int OrganizationId { get; set; }
         [Display(Name = "Course Name")]
         public string Name { get; set; }
@@ -24,6 +25,7 @@ namespace Models
         public bool IsDeleted { get; set; }
 
         public List<Batch> Batches { get; set; }
-
+        public List<Trainer> Trainers { get; set; }
+        public List<Participant> Participants { get; set; }
     }
 }

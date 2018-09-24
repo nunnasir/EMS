@@ -13,5 +13,9 @@ namespace DatabaseContexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Batch> Batches { get; set; }
+        public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Participant> Participants { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }
