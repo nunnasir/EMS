@@ -1,0 +1,100 @@
+﻿@model Models.ViewModels.BatchEntryVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Batch Update Form</h1>
+        <hr />
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+        
+        <!-- Nav Tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Basic Info</a></li>
+            <li role="presentation"><a href="#participant" aria-controls="participant" role="tab" data-toggle="tab">Assign Participants</a></li>
+            <li role="presentation"><a href="#trainer" aria-controls="trainer" role="tab" data-toggle="tab">Assign Trainer</a></li>
+            <li role="presentation"><a href="#exam" aria-controls="exam" role="tab" data-toggle="tab">Schedule Exams</a></li>
+        </ul>
+
+        <!-- Tab Pans -->
+        <div class="tab-content">
+
+            <!-- Basic Content -->
+            <br />
+            <div role="tabpanel" class="tab-pane fade in active" id="basic">
+                <form method="post">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Organization" class="col-md-2 control-label">Organization</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Course" class="col-md-2 control-label">Course</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="BatchNo" class="col-md-2 control-label">Batch No</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(c => c.BatchNo, new { @class = "form-control BatchNo", placeholder = "Batch No" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Description" class="col-md-2 control-label">Description</label>
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(c => c.Description, new { @class = "form-control", placeholder = "Description" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="StartDate" class="col-md-2 control-label">Start Date</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(c => c.StartDate, new { type = "date", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="EndDate" class="col-md-2 control-label">End Date</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(c => c.EndDate, new { type = "date", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary pull-right">Update</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="participant"></div>
+            <div role="tabpanel" class="tab-pane fade" id="trainer"></div>
+            <div role="tabpanel" class="tab-pane fade" id="exam"></div>
+        </div>
+        
+    </div>
+
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AppScript/BatchEntry/BatchDetail.js"></script>
+</body>
+</html>

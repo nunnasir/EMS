@@ -19,6 +19,8 @@
         <hr />
         @Html.ValidationSummary(true, null, new { @class = "text-danger" })
         
+        
+
         <form method="post">
             <div class="form-horizontal">
                 <div class="form-group">
@@ -38,7 +40,7 @@
                 <div class="form-group">
                     <label for="BatchNo" class="col-md-2 control-label">Batch No</label>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.BatchNo, new { @class = "form-control", placeholder = "Batch No" })
+                        @Html.TextBoxFor(c => c.BatchNo, new { @class = "form-control BatchNo", placeholder = "Batch No", @readonly = "readonly"})
                     </div>
                 </div>
                 
@@ -73,11 +75,6 @@
         </form>
     </div>
     
-        <script type="text/javascript">
-            $(function () { // will trigger when the document is ready
-                $('.date').datepicker(); //Initialise any date pickers
-            });
-        </script>
 
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

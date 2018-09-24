@@ -22,5 +22,11 @@ namespace Models
 
         public List<Trainer> Trainers { get; set; }
         public List<Participant> Participants { get; set; }
+
+        public virtual Course Course { get; set; }
+
+        public int OrganizationId { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

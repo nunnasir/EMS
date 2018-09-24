@@ -35,23 +35,69 @@ namespace Repository
 
         public List<Batch> GetBatchBySearch(BatchSearchCriteria model)
         {
-            //IQueryable<Batch> batches = db.Batches.AsQueryable();
-            IQueryable<Batch> batches = db.Batches.AsQueryable();
 
+            IQueryable<Batch> batches = db.Batches.Where(c => c.IsDeleted == false).AsQueryable();
 
-
-            //if (model.CourseId != 0)
+            //if (!string.IsNullOrEmpty(model.Course.Name))
             //{
-            //    batches = batches.Where(c =>
-            //        c.CourseId.ToString().ToLower().Contains(model.CourseId.ToString().ToLower()));
+            //    batches = batches.Where(c => c.Course.Name.ToLower().Contains(model.Course.Name.ToLower()));
             //}
 
-            //if (!string.IsNullOrEmpty(model.StartDate.ToString()))
+            if (model.BatchNo > 0)
+            {
+                batches = batches.Where(
+                    c => c.BatchNo.ToString().ToLower().Contains(model.BatchNo.ToString().ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(model.StartDate.ToString()))
+            {
+                batches = batches.Where(c => c.StartDate >= model.StartDate);
+            }
+
+            //if (!string.IsNullOrEmpty(model.EndDate.ToString()))
             //{
-            //    batches = batches.Where(c => c.StartDate >= model.StartDate).Include(cs => cs.Course);
+            //    batches = batches.Where(c => c.EndDate <= model.EndDate);
             //}
+            
 
             return batches.ToList();
+        }
+
+        public List<Batch> GetBatchNoByCourseId(int id)
+        {
+            var data = db.Batches.Where(c => c.CourseId == id);
+            
+            return data.ToList();
+        }
+
+        //Get Batch By Id
+        public Batch GetById(int id)
+        {
+            var data = db.Batches.Where(c => c.Id == id).FirstOrDefault();
+            return data;
+        }
+
+
+        //Update Batches
+        public bool Update(Batch batch)
+        {
+            db.Entry(batch).State = EntityState.Modified;
+            return db.SaveChanges() > 0;
+        }
+
+        //Delete Batch
+        public bool Delete(int id)
+        {
+            Batch batch = new Batch();
+            batch = db.Batches.Where(c => c.Id == id).Where(cs => cs.Participants.Count == 0 && cs.Trainers.Count == 0).FirstOrDefault();
+
+            if (batch != null)
+            {
+                batch.IsDeleted = true;
+                return Update(batch);
+            }
+
+            return false;
         }
     }
 

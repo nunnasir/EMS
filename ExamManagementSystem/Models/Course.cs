@@ -14,9 +14,10 @@ namespace Models
         public int Id { get; set; }
         public Organization Organization { get; set; }
         public int OrganizationId { get; set; }
+        [Display(Name = "Course Name")]
         public string Name { get; set; }
         public string Code { get; set; }
-        public string Duration { get; set; }
+        public int Duration { get; set; }
         public int Credit { get; set; }
         public string Outline { get; set; }
         public string Tag { get; set; }

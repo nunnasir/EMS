@@ -34,5 +34,25 @@ namespace BLL
             List<Batch> batches = _batchRepository.GetBatchBySearch(model);
             return batches;
         }
+
+        public List<Batch> GetBatchNoByCourseId(int id)
+        {
+            return _batchRepository.GetBatchNoByCourseId(id);
+        }
+
+        public Batch GetById(int id)
+        {
+            return _batchRepository.GetById(id);
+        }
+
+        public bool Update(Batch batch)
+        {
+            return _batchRepository.Update(batch);
+        }
+
+        public bool Delete(int id)
+        {
+            return _batchRepository.Delete(id);
+        }
     }
 }

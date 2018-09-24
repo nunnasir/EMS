@@ -13,65 +13,113 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <p>
-            @Html.ActionLink("Create New", "Entry")
-        </p>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Course.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BatchNo)
-                    </th>
-                    @*<th>
+<div class="container">
+    <h1>All Bathc Info</h1>
+    <hr/>
+    
+    @using (Html.BeginForm("Index", "Batch", FormMethod.Get, new {@class = "form-horizontal"}))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="CourseName" class="col-md-3 control-label">Course Name</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="Course.Name" class="form-control" type="text" placeholder="Course Name" disabled="disabled"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="BatchNo" class="col-md-3 control-label">Batch No</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="BatchNo" class="form-control" type="text" placeholder="Batch No" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="StartDate" class="col-md-3 control-label">Start Date</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="StartDate" class="form-control" type="date"/>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="EndDate" class="col-md-3 control-label">End Date</label>
+                    <div class="col-md-9">
+                        <input id="searchTextbox" name="EndDate" class="form-control" type="date" disabled="disabled"/>
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-md-4 pull-right">
+                        <input id="searchButton" type="submit" value="Search" class="btn-success form-control"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+    <hr/>
+    <p>
+        @Html.ActionLink("Create New", "Entry")
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BatchNo)
+                </th>
+                @*<th>
                         @Html.DisplayNameFor(model => model.Description)
                     </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.StartDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EndDate)
-                    </th>
-                    @*<th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                @*<th>
                         @Html.DisplayNameFor(model => model.OrganizationId)
                     </th>*@
-                    <th></th>
-                </tr>
+                <th></th>
+            </tr>
 
-                @foreach (var item in Model.ListOfBatch)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CourseId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BatchNo)
-                        </td>
-                        @*<td>
+            @foreach (var item in Model.ListOfBatch)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BatchNo)
+                    </td>
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndDate)
-                        </td>
-                        @*<td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.OrganizationId)
                         </td>*@
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>
-                    </tr>
-                }
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                        @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+                        @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                    </td>
+                </tr>
+            }
 
-            </table>
-        </div> 
+        </table>
     </div>
+</div>
 </body>
 </html>

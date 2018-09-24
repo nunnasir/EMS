@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201809210502385_add_batch_trainer_participant_model.Designer.cs">
       <DependentUpon>201809210502385_add_batch_trainer_participant_model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809241040396_Update_Batch_and_Course_Model.cs" />
+    <Compile Include="Migrations\201809241040396_Update_Batch_and_Course_Model.Designer.cs">
+      <DependentUpon>201809241040396_Update_Batch_and_Course_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809210502385_add_batch_trainer_participant_model.resx">
       <DependentUpon>201809210502385_add_batch_trainer_participant_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809241040396_Update_Batch_and_Course_Model.resx">
+      <DependentUpon>201809241040396_Update_Batch_and_Course_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
