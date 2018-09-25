@@ -11,7 +11,7 @@ namespace Models.SearchCriteria
     {
         public int CourseId { get; set; }
         public Course Course { get; set; }
-        public int BatchNo { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

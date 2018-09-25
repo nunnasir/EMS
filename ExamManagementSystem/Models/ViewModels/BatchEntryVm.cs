@@ -14,7 +14,7 @@ namespace Models.ViewModels
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
-        public int BatchNo { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         [Column(TypeName = "Date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime StartDate { get; set; }

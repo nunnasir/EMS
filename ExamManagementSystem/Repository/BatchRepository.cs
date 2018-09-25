@@ -43,10 +43,10 @@ namespace Repository
             //    batches = batches.Where(c => c.Course.Name.ToLower().Contains(model.Course.Name.ToLower()));
             //}
 
-            if (model.BatchNo > 0)
+            if (!string.IsNullOrEmpty(model.Name))
             {
                 batches = batches.Where(
-                    c => c.BatchNo.ToString().ToLower().Contains(model.BatchNo.ToString().ToLower()));
+                    c => c.Name.ToString().ToLower().Contains(model.Name.ToString().ToLower()));
             }
 
             if (!string.IsNullOrEmpty(model.StartDate.ToString()))

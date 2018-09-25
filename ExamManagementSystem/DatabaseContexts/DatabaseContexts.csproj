@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201809241854488_add_isDeleted_on_Trainer_Participant.Designer.cs">
       <DependentUpon>201809241854488_add_isDeleted_on_Trainer_Participant.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809250221128_Update_Batch_Model.cs" />
+    <Compile Include="Migrations\201809250221128_Update_Batch_Model.Designer.cs">
+      <DependentUpon>201809250221128_Update_Batch_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809241854488_add_isDeleted_on_Trainer_Participant.resx">
       <DependentUpon>201809241854488_add_isDeleted_on_Trainer_Participant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809250221128_Update_Batch_Model.resx">
+      <DependentUpon>201809250221128_Update_Batch_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
