@@ -26,8 +26,8 @@ namespace Models.ViewModels
         public CourseEntryVm CourseVm { get; set; }
 
         public List<CourseEntryVm> Courses { get; set; }
-
-
+        public List<Trainer> Trainers { get; set; }
+        public List<Participant> Participants { get; set; }
         public List<Organization> Organizations { get; set; }
 
     }

@@ -23,7 +23,7 @@ namespace Models
         public string PostalCode { get; set; }
         public string Profession { get; set; }
         public string Academy { get; set; }
-        public byte Image { get; set; }
+        public byte[] Image { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

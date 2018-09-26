@@ -1,4 +1,5 @@
 ﻿@model Models.ViewModels.TrainerEntryVm
+@*@model Models.Trainer*@
 
 @{
     Layout = null;
@@ -11,6 +12,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Entry</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -18,9 +20,10 @@
         <hr />
         @Html.ValidationSummary(true, null, new { @class = "text-danger" })
         
-        <form method="post">
+        @*<form method="post" action="" enctype="multipart/form-data">*@
+        <form method="post" enctype="multipart/form-data">
             <div class="form-horizontal">
-                
+
                 <div class="form-group">
                     <label for="Organization" class="col-md-2 control-label">Organization</label>
                     <div class="col-md-10">
@@ -34,21 +37,21 @@
                         @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="Batch" class="col-md-2 control-label">Batch</label>
                     <div class="col-md-10">
                         @Html.DropDownListFor(c => c.BatchId, new List<SelectListItem>(), new { @class = "form-control", id = "batchListDD" })
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="Name" class="col-md-2 control-label">Name</label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder = "Name" })
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="ContactNo" class="col-md-2 control-label">Reg No</label>
                     <div class="col-md-10">
@@ -87,7 +90,7 @@
                 <div class="form-group">
                     <label for="City" class="col-md-2 control-label">City</label>
                     <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "cityListDD" })
+                        @Html.DropDownListFor(c => c.CityId, new List<SelectListItem>(), new { @class = "form-control", id = "cityListDD" })
                     </div>
                 </div>
 
@@ -97,6 +100,13 @@
                         @Html.TextBoxFor(c => c.PostalCode, new { @class = "form-control", placeholder = "Postal Code" })
                     </div>
                 </div>
+
+                @*<div class="form-group ">
+                    <label for="Image" class="col-md-2 control-label">Image</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.Image, new { type = "file", name = "Image" })
+                    </div>
+                </div>*@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

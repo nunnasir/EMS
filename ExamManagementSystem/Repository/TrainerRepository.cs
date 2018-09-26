@@ -38,7 +38,7 @@ namespace Repository
         }
 
         //Get All Trainers
-        public List<Trainer> GetBatchBySearch(TrainerSearchCriteria criteria)
+        public List<Trainer> GetTrainerBySearch(TrainerSearchCriteria criteria)
         {
             IQueryable<Trainer> trainers = db.Trainers.Where(c => c.IsDeleted == false).AsQueryable();
 

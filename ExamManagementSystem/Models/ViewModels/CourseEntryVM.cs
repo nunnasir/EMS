@@ -20,6 +20,8 @@ namespace Models.ViewModels
         public string Tag { get; set; }
         public bool IsDeleted { get; set; }
 
+        public List<Trainer> Trainers { get; set; }
+        public List<Participant> Participants { get; set; }
 
         public List<SelectListItem> OrganizationListItem { get; set; }
 

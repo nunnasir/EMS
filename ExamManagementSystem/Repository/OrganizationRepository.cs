@@ -64,6 +64,9 @@ namespace Repository
             var organization = db.Organizations.Where(c => c.Id == id).FirstOrDefault();
 
             db.Entry(organization).Collection(c => c.Courses).Query().Where(x => x.IsDeleted == false).Load();
+            db.Entry(organization).Collection(c => c.Trainers).Query().Where(x => x.IsDeleted == false).Load();
+            db.Entry(organization).Collection(c => c.Participants).Query().Where(x => x.IsDeleted == false).Load();
+            
 
             return organization;
         }

@@ -32,9 +32,9 @@ namespace BLL
         }
 
         //Get All Trainer
-        public List<Trainer> GetBatchBySearch(TrainerSearchCriteria model)
+        public List<Trainer> GetTrainerBySearch(TrainerSearchCriteria model)
         {
-            List<Trainer> trainer = _trainerRepository.GetBatchBySearch(model);
+            List<Trainer> trainer = _trainerRepository.GetTrainerBySearch(model);
             return trainer;
         }
 

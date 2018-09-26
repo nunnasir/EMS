@@ -101,6 +101,18 @@
     <Compile Include="Migrations\201809250221128_Update_Batch_Model.Designer.cs">
       <DependentUpon>201809250221128_Update_Batch_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809251929264_Add-Image_option_on_Trainer_Participant.cs" />
+    <Compile Include="Migrations\201809251929264_Add-Image_option_on_Trainer_Participant.Designer.cs">
+      <DependentUpon>201809251929264_Add-Image_option_on_Trainer_Participant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260645599_Update_Organization_Model2.cs" />
+    <Compile Include="Migrations\201809260645599_Update_Organization_Model2.Designer.cs">
+      <DependentUpon>201809260645599_Update_Organization_Model2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809261750466_check_migrate_data.cs" />
+    <Compile Include="Migrations\201809261750466_check_migrate_data.Designer.cs">
+      <DependentUpon>201809261750466_check_migrate_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,6 +165,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809250221128_Update_Batch_Model.resx">
       <DependentUpon>201809250221128_Update_Batch_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251929264_Add-Image_option_on_Trainer_Participant.resx">
+      <DependentUpon>201809251929264_Add-Image_option_on_Trainer_Participant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260645599_Update_Organization_Model2.resx">
+      <DependentUpon>201809260645599_Update_Organization_Model2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809261750466_check_migrate_data.resx">
+      <DependentUpon>201809261750466_check_migrate_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,7 +21,7 @@ namespace Models.ViewModels
         public int CountryId { get; set; }
         public int CityId { get; set; }
         public string PostalCode { get; set; }
-        public byte Image { get; set; }
+        public byte[] Image { get; set; }
 
         public List<SelectListItem> OrganizationList { get; set; }
         public List<SelectListItem> CountryList { get; set; }

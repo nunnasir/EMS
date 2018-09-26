@@ -129,8 +129,9 @@ namespace ExamManagementSystem.Controllers
         //Get Batch Number By Courses
         public JsonResult GetBatchNoByCourseId(int id)
         {
-            var data = _batchManager.GetBatchNoByCourseId(id).Count;
-            return Json(data);
+            var data = _batchManager.GetBatchNoByCourseId(id);
+            //return Json(data);
+            return Json(data.Count);
         }
 
     }

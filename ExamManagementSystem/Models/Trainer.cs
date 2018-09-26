@@ -20,7 +20,13 @@ namespace Models
         public int CountryId { get; set; }
         public int CityId { get; set; }
         public string PostalCode { get; set; }
-        public byte Image { get; set; }
+        public byte[] Image { get; set; }
         public bool IsDeleted { get; set; }
+
+        public virtual Organization Organization { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
+
     }
 }

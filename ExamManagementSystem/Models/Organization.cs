@@ -26,6 +26,8 @@ namespace Models
         public bool IsDeleted { get; set; }
 
         public List<Course> Courses { get; set; }
+        public List<Trainer> Trainers { get; set; }
+        public List<Participant> Participants { get; set; }
         
     }
 }
