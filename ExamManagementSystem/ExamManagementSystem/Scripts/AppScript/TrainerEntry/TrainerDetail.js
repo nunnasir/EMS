@@ -1,37 +1,43 @@
 ﻿
-//Get Courses By Organization
-$("#OrganizationId").change(function () {
+$(document).ready(function() {
 
-    var orgId = $(this).val();
-
-    if (orgId != "") {
-        var params = { id: orgId }
-
-        $.ajax({
-            type: "POST",
-            url: "../../Trainer/GetCourseByOrganizationId",
-            contentType: "application/JSON; charset=utf-8",
-            data: JSON.stringify(params),
-
-            success: function (rData) {
-                if (rData != undefined && rData != "") {
-                    $("#courseListDD").empty();
-                    $("#courseListDD").append("<option value=''>Select Course</option>");
-
-                    $.each(rData,
-                        function (k, v) {
-                            var option = "<option value='" + v.Id + "'>" + v.Name + "</option>";
-                            $("#courseListDD").append(option);
-                        });
-                } else {
-                    $("#courseListDD").empty();
-                    $("#courseListDD").append("<option value=''>Select Course</option>");
-                }
-            }
-        });
+    //Get Course By Organization (First Time With Page Load)
+    var orgId = $("#OrganizationId").val();
+    if (orgId != "" && orgId != undefined) {
+        loadCourseByOrgId(orgId);
     }
 
+    //Get Courses By Change Organization
+    $("#OrganizationId").change(function () {
+
+        var orgId = $(this).val();
+
+        if (orgId != "" && orgId != undefined) {
+            loadCourseByOrgId(orgId);
+        }
+
+    });
+
+    //Get City By Country (First Time With Page Load)
+    var countryId = $("#CountryId").val();
+    if (countryId != "" && countryId != undefined) {
+        loadCityCountryId(countryId);
+    }
+
+    //Get Courses By Change Organization
+    $("#CountryId").change(function () {
+
+        var CountryId = $(this).val();
+
+        if (CountryId != "" && CountryId != undefined) {
+            loadCityCountryId(orgId);
+        }
+
+    });
+
+
 });
+
 
 
 //Get Batch By Course
@@ -69,39 +75,64 @@ $("#courseListDD").change(function () {
 });
 
 
-//Get City By Country
-$("#CountryId").change(function () {
+//Load Organization (jQuery Function)
+function loadCourseByOrgId(orgId) {
+    var params = { id: orgId };
+    $.ajax({
+        type: "POST",
+        url: "../../Trainer/GetCourseByOrganizationId",
+        contentType: "application/JSON; charset=utf-8",
+        data: JSON.stringify(params),
 
-    var countryId = $(this).val();
+        success: function (rData) {
+            if (rData != undefined && rData != "") {
+                $("#courseListDD").empty();
+                $("#courseListDD").append("<option value=''>Select Course</option>");
 
-    if (countryId != "") {
-        var params = { id: countryId }
-
-        $.ajax({
-            type: "POST",
-            url: "../../Trainer/GetCitiesByCountry",
-            contentType: "application/JSON; charset=utf-8",
-            data: JSON.stringify(params),
-
-            success: function (rData) {
-                if (rData != undefined && rData != "") {
-                    $("#cityListDD").empty();
-                    $("#cityListDD").append("<option value=''>Select City</option>");
-
-                    $.each(rData,
-                        function (k, v) {
-                            var option = "<option value='" + v.Id + "'>" + v.Name + "</option>";
-                            $("#cityListDD").append(option);
-                        });
-                } else {
-                    $("#cityListDD").empty();
-                    $("#cityListDD").append("<option value=''>Select city</option>");
-                }
+                $.each(rData,
+                    function (k, v) {
+                        var option = "<option value='" + v.Id + "'>" + v.Name + "</option>";
+                        $("#courseListDD").append(option);
+                    });
+            } else {
+                $("#courseListDD").empty();
+                $("#courseListDD").append("<option value=''>Select Course</option>");
             }
-        });
-    }
+        }
+    });
+}
 
-});
+//Load city (jQuery Function)
+function loadCityCountryId(countryId) {
+    var params = { id: countryId };
+    $.ajax({
+        type: "POST",
+        url: "../../Trainer/GetCitiesByCountry",
+        contentType: "application/JSON; charset=utf-8",
+        data: JSON.stringify(params),
+
+        success: function (rData) {
+            if (rData != undefined && rData != "") {
+                $("#cityListDD").empty();
+                $("#cityListDD").append("<option value=''>Select City</option>");
+
+                $.each(rData,
+                    function (k, v) {
+                        var option = "<option value='" + v.Id + "'>" + v.Name + "</option>";
+                        $("#cityListDD").append(option);
+                    });
+            } else {
+                $("#cityListDD").empty();
+                $("#cityListDD").append("<option value=''>Select city</option>");
+            }
+        }
+    });
+}
+
+
+
+
+
 
 
 

@@ -68,6 +68,73 @@ namespace ExamManagementSystem.Controllers
         }
 
 
+        //Edit Trainer
+        public ActionResult Edit(int id)
+        {
+            var trainer = new Trainer();
+            if (id > 0)
+            {
+                trainer = _trainerManager.GetById(id);
+
+                var model = Mapper.Map<TrainerEntryVm>(trainer);
+
+                model.OrganizationList = GetOrganizationList();
+                model.CountryList = GetCountryList();
+
+                return View(model);
+            }
+
+            return View();
+        }
+
+        //Update Trainer
+        [HttpPost]
+        public ActionResult Edit(TrainerEntryVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                var trainer = Mapper.Map<Trainer>(model);
+                bool isUpdate = _trainerManager.Update(trainer);
+
+                if (isUpdate)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View();
+        }
+
+
+        //Delete Trainer
+        public ActionResult Delete(int id)
+        {
+            if (id > 0)
+            {
+                bool isDeleted = _trainerManager.Delete(id);
+                if (isDeleted)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        //Details Trainer
+        public ActionResult Details(int id)
+        {
+            if (id > 0)
+            {
+                var trainer = _trainerManager.GetById(id);
+
+                var model = Mapper.Map<TrainerEntryVm>(trainer);
+
+                return View(model);
+            }
+
+            return View();
+        }
+
 
 
 

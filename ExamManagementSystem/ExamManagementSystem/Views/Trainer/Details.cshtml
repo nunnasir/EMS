@@ -1,0 +1,110 @@
+﻿@model Models.ViewModels.TrainerEntryVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-primary">@Model.Name</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Organization.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Organization.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Course.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Course.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ContactNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AddressLine1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AddressLine2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Country.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Country.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.City.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.City.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+        </dl>
+        
+        <hr/>
+        
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    
+</body>
+</html>

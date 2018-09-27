@@ -12,6 +12,7 @@ namespace Models
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
+        [Display(Name = "Batch Name")]
         public string Name { get; set; }
         public string Description { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]

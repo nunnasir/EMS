@@ -14,6 +14,7 @@ namespace Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Organization Name")]
         public string Name { get; set; }
         [Required]
         public string Code { get; set; }

@@ -23,6 +23,11 @@ namespace Models.ViewModels
         public string PostalCode { get; set; }
         public byte[] Image { get; set; }
 
+        public Organization Organization { get; set; }
+        public Course Course { get; set; }
+        public Country Country { get; set; }
+        public City City { get; set; }
+
         public List<SelectListItem> OrganizationList { get; set; }
         public List<SelectListItem> CountryList { get; set; }
 

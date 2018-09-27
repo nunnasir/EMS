@@ -44,12 +44,12 @@
                     </div>
                 </div>
                     
-                <div class="form-group">
+                @*<div class="form-group">
                     <label for="ContactNo" class="col-md-3 control-label">Contact No</label>
                     <div class="col-md-9">
                         <input id="searchTextbox" name="ContactNo" class="form-control" type="text" placeholder="ContactNo" />
                     </div>
-                </div>
+                </div>*@
 
             </div>
                 
@@ -136,7 +136,7 @@
                         @Html.DisplayFor(modelItem => item.Country.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "CourseInformation", new {id = item.Id}) |
+                        @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
                         @Html.ActionLink("Details", "Details", new {id = item.Id}) |
                         @Html.ActionLink("Delete", "Delete", new {id = item.Id})
                     </td>
