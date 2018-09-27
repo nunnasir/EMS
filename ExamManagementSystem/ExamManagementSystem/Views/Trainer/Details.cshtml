@@ -34,14 +34,6 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-    
-            <dt>
                 @Html.DisplayNameFor(model => model.ContactNo)
             </dt>
     
@@ -56,21 +48,13 @@
             <dd>
                 @Html.DisplayFor(model => model.Email)
             </dd>
-    
+            
             <dt>
-                @Html.DisplayNameFor(model => model.AddressLine1)
+                Address
             </dt>
-    
+            
             <dd>
-                @Html.DisplayFor(model => model.AddressLine1)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AddressLine2)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AddressLine2)
+                @Model.FullAddress()
             </dd>
     
             <dt>

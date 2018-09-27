@@ -31,6 +31,11 @@ namespace Models.ViewModels
         public List<SelectListItem> OrganizationList { get; set; }
         public List<SelectListItem> CountryList { get; set; }
 
+        public string FullAddress()
+        {
+            return AddressLine1 + ", " + AddressLine2;
+        }
+
 
     }
 }
