@@ -78,11 +78,13 @@
     <Compile Include="SearchCriteria\BatchSearchCriteria.cs" />
     <Compile Include="SearchCriteria\CourseSearchCriteria.cs" />
     <Compile Include="SearchCriteria\OrganizationSearchCriteria.cs" />
+    <Compile Include="SearchCriteria\ParticipantSearchCriteria.cs" />
     <Compile Include="SearchCriteria\TrainerSearchCriteria.cs" />
     <Compile Include="Trainer.cs" />
     <Compile Include="ViewModels\BatchEntryVm.cs" />
     <Compile Include="ViewModels\CourseEntryVm.cs" />
     <Compile Include="ViewModels\OrganizationEntryVm.cs" />
+    <Compile Include="ViewModels\ParticipantEntryVm.cs" />
     <Compile Include="ViewModels\TrainerEntryVm.cs" />
   </ItemGroup>
   <ItemGroup>

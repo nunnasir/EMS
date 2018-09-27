@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
-namespace Models
+namespace Models.ViewModels
 {
-    public class Participant
+    public class ParticipantEntryVm
     {
         public int Id { get; set; }
         public int OrganizationId { get; set; }
@@ -26,11 +27,20 @@ namespace Models
         public string Profession { get; set; }
         public string Academy { get; set; }
         public byte[] Image { get; set; }
-        public bool IsDeleted { get; set; }
 
-        public virtual Organization Organization { get; set; }
-        public virtual Course Course { get; set; }
-        public virtual City City { get; set; }
-        public virtual Country Country { get; set; }
+        public Organization Organization { get; set; }
+        public Course Course { get; set; }
+        public Country Country { get; set; }
+        public City City { get; set; }
+
+        public List<SelectListItem> OrganizationList { get; set; }
+        public List<SelectListItem> CountryList { get; set; }
+
+        public string FullAddress()
+        {
+            return AddressLine1 + ", " + AddressLine2;
+        }
+
+
     }
 }

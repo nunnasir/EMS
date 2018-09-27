@@ -10,17 +10,16 @@ using Models.SearchCriteria;
 
 namespace Repository
 {
-    public class TrainerRepository
+    public class ParticipantRepository
     {
         ExamManagementDbContext db = new ExamManagementDbContext();
-        
+
         //Get All Organization
         public List<Organization> GetAllOrgnization()
         {
             List<Organization> organizations = db.Organizations.Where(c => c.IsDeleted == false).ToList();
             return organizations;
         }
-
 
         //Get Courses Againts Organization
         public List<Course> GetCourseByOrganizationId(int id)
@@ -29,83 +28,84 @@ namespace Repository
             return course;
         }
 
-        //Add Trainer
-        public bool Add(Trainer trainer)
+        //Add Participant
+        public bool Add(Participant participant)
         {
-            db.Trainers.Add(trainer);
+            db.Participants.Add(participant);
 
             return db.SaveChanges() > 0;
         }
 
-        //Get All Trainers
-        public List<Trainer> GetTrainerBySearch(TrainerSearchCriteria criteria)
+        //Get All Participant
+        public List<Participant> GetParticipantBySearch(ParticipantSearchCriteria criteria)
         {
-            IQueryable<Trainer> trainers = db.Trainers.Where(c => c.IsDeleted == false).AsQueryable();
+            IQueryable<Participant> participants = db.Participants.Where(c => c.IsDeleted == false).AsQueryable();
 
             if (!string.IsNullOrEmpty(criteria.Name))
             {
-                trainers = trainers.Where(c => c.Name.ToLower().Contains(criteria.Name.ToLower()));
+                participants = participants.Where(c => c.Name.ToLower().Contains(criteria.Name.ToLower()));
             }
 
             if (criteria.OrganizationId > 0)
             {
-                trainers = trainers.Where(c =>
+                participants = participants.Where(c =>
                     c.OrganizationId.ToString().Contains(criteria.OrganizationId.ToString()));
             }
 
             if (criteria.CourseId > 0)
             {
-                trainers = trainers.Where(c => c.CourseId.ToString().Contains(criteria.CourseId.ToString()));
+                participants = participants.Where(c => c.CourseId.ToString().Contains(criteria.CourseId.ToString()));
             }
 
             if (criteria.CountryId > 0)
             {
-                trainers = trainers.Where(c => c.CountryId.ToString().Contains(criteria.CountryId.ToString()));
+                participants = participants.Where(c => c.CountryId.ToString().Contains(criteria.CountryId.ToString()));
             }
 
             if (criteria.CityId > 0)
             {
-                trainers = trainers.Where(c => c.CityId.ToString().Contains(criteria.CityId.ToString()));
+                participants = participants.Where(c => c.CityId.ToString().Contains(criteria.CityId.ToString()));
             }
 
             if (!string.IsNullOrEmpty(criteria.Email))
             {
-                trainers = trainers.Where(c => c.Email.ToLower().Contains(criteria.Email.ToLower()));
+                participants = participants.Where(c => c.Email.ToLower().Contains(criteria.Email.ToLower()));
             }
 
 
-            return trainers.ToList();
+            return participants.ToList();
         }
 
 
-        //Get Trainer By Id
-        public Trainer GetById(int id)
+        //Get Participant By Id
+        public Participant GetById(int id)
         {
-            var data = db.Trainers.Where(c => c.Id == id).FirstOrDefault();
+            var data = db.Participants.Where(c => c.Id == id).FirstOrDefault();
             return data;
         }
 
-        //Update Trainer
-        public bool Update(Trainer trainer)
+        //Update Participants
+        public bool Update(Participant participant)
         {
-            db.Entry(trainer).State = EntityState.Modified;
+            db.Entry(participant).State = EntityState.Modified;
             return db.SaveChanges() > 0;
         }
 
-        //Delete Trainer
+        //Delete Participants
         public bool Delete(int id)
         {
-            Trainer trainer = new Trainer();
-            trainer = db.Trainers.Where(c => c.Id == id).FirstOrDefault();
+            Participant participant = new Participant();
+            participant = db.Participants.Where(c => c.Id == id).FirstOrDefault();
 
-            if (trainer != null)
+            if (participant != null)
             {
-                trainer.IsDeleted = true;
-                return Update(trainer);
+                participant.IsDeleted = true;
+                return Update(participant);
             }
 
             return false;
         }
+
 
         //Get Batch Againts Course
         public List<Batch> GetBatchByCourseId(int id)
@@ -127,9 +127,6 @@ namespace Repository
             var cities = db.Cities.Where(c => c.CountryId == id).ToList();
             return cities;
         }
-
-
-
 
     }
 }

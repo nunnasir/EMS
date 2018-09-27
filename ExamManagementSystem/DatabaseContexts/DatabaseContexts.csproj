@@ -113,6 +113,10 @@
     <Compile Include="Migrations\201809261750466_check_migrate_data.Designer.cs">
       <DependentUpon>201809261750466_check_migrate_data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809271850461_Update_Participant_Model.cs" />
+    <Compile Include="Migrations\201809271850461_Update_Participant_Model.Designer.cs">
+      <DependentUpon>201809271850461_Update_Participant_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809261750466_check_migrate_data.resx">
       <DependentUpon>201809261750466_check_migrate_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271850461_Update_Participant_Model.resx">
+      <DependentUpon>201809271850461_Update_Participant_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

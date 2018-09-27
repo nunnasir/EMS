@@ -50,7 +50,7 @@ $("#courseListDD").change(function () {
 
         $.ajax({
             type: "POST",
-            url: "../../Trainer/GetBatchByCourseId",
+            url: "../../Participant/GetBatchByCourseId",
             contentType: "application/JSON; charset=utf-8",
             data: JSON.stringify(params),
 
@@ -80,7 +80,7 @@ function loadCourseByOrgId(orgId) {
     var params = { id: orgId };
     $.ajax({
         type: "POST",
-        url: "../../Trainer/GetCourseByOrganizationId",
+        url: "../../Participant/GetCourseByOrganizationId",
         contentType: "application/JSON; charset=utf-8",
         data: JSON.stringify(params),
 
@@ -107,7 +107,7 @@ function loadCityByCountryId(countryId) {
     var params = { id: countryId };
     $.ajax({
         type: "POST",
-        url: "../../Trainer/GetCitiesByCountry",
+        url: "../../Participant/GetCitiesByCountry",
         contentType: "application/JSON; charset=utf-8",
         data: JSON.stringify(params),
 
