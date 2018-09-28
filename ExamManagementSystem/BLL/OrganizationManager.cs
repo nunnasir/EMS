@@ -38,5 +38,10 @@ namespace BLL
         {
             return _organizationRepository.Delete(id);
         }
+
+        public List<Organization> MakeOrganizationCode()
+        {
+            return _organizationRepository.MakeOrganizationCode();
+        }
     }
 }

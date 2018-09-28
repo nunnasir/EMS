@@ -74,5 +74,9 @@ namespace BLL
             return _participantRepository.GetCitiesByCountry(id);
         }
 
+        public List<Participant> MakeParticipantRegNo(int id)
+        {
+            return _participantRepository.MakeParticipantRegNo(id);
+        }
     }
 }

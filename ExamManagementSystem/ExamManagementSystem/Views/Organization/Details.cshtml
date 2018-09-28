@@ -33,8 +33,8 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#courses" aria-controls="course" role="tab" data-toggle="tab">Course</a></li>
-                <li role="presentation"><a href="#trainers" aria-controls="trainers" role="tab" data-toggle="tab">Trainers</a></li>
-                <li role="presentation"><a href="#participants" aria-controls="participants" role="tab" data-toggle="tab">Participants</a></li>
+                @*<li role="presentation"><a href="#trainers" aria-controls="trainers" role="tab" data-toggle="tab">Trainers</a></li>
+                <li role="presentation"><a href="#participants" aria-controls="participants" role="tab" data-toggle="tab">Participants</a></li>*@
             </ul>
             
             <!-- Tab panes -->
@@ -52,11 +52,11 @@
 
                                 <th>
                                     @*@Html.DisplayNameFor(model => model.CourseVm.Trainer.Count)*@
-                                    Trainer
+                                    No Of Trainer
                                 </th>
                                 <th>
                                     @*@Html.DisplayNameFor(model => model.CourseVm.Participant.Count)*@
-                                    Participant
+                                    No Of Participant
                                 </th>
                                 
                                 <th>Action</th>
@@ -74,11 +74,13 @@
                                     
                                     
                                     <td>
-                                        @Html.DisplayFor(c => item.Trainers.Count)
+                                        <a href="~/Trainer?CourseId=@item.Id">@item.Trainers.Count</a>
+                                        @*@Html.DisplayFor(c => item.Trainers.Count)*@
                                     </td>
                                     
                                     <td>
-                                        @Html.DisplayFor(c => item.Participants.Count)
+                                        <a href="~/Participant?CourseId=@item.Id">@item.Participants.Count</a>
+                                        @*@Html.DisplayFor(c => item.Participants.Count)*@
                                     </td>
                                     
                                     <td>
@@ -94,8 +96,8 @@
                         </table>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="trainers">...</div>
-                <div role="tabpanel" class="tab-pane fade" id="participants">...</div>
+                @*<div role="tabpanel" class="tab-pane fade" id="trainers">...</div>
+                <div role="tabpanel" class="tab-pane fade" id="participants">...</div>*@
             </div>
 
         </div>

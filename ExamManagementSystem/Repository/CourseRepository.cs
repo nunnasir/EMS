@@ -98,5 +98,10 @@ namespace Repository
 
             return courses.ToList();
         }
+
+        public List<Course> MakeCourseCode(int id)
+        {
+            return db.Courses.ToList();
+        }
     }
 }

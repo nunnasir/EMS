@@ -1,4 +1,17 @@
 ﻿
+
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 4; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+
+
 $(document).ready(function() {
 
     //Get Course By Organization (First Time With Page Load)
@@ -73,6 +86,38 @@ $("#courseListDD").change(function () {
     }
 
 });
+
+
+
+$("#batchListDD").change(function () {
+
+    var batchId = $(this).val();
+
+    if (batchId != "") {
+        var params = { id: batchId }
+
+        $.ajax({
+            type: "POST",
+            url: "../../Participant/MakeParticipantRegNo",
+            contentType: "application/JSON; charset=utf-8",
+            data: JSON.stringify(params),
+
+            success: function (rData) {
+                if (rData > 0) {
+
+
+                    $("#RegNumber").empty();
+                    $("#RegNumber").val('PRCPT-' + makeid() + (rData + 1));
+                } else {
+                    $("#RegNumber").val('PRCPT' + makeid() + (rData + 1));
+                }
+            }
+        });
+    }
+
+});
+
+
 
 
 //Load Organization (jQuery Function)

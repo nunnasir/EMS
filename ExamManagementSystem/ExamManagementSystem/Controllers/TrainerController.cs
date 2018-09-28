@@ -172,7 +172,7 @@ namespace ExamManagementSystem.Controllers
             if (id > 0)
             {
                 var dataList = _trainerManager.GetCourseByOrganizationId(id);
-                return Json(dataList);
+                return Json(dataList.Select(c => new { Id = c.Id, Name = c.Name }));
             }
 
             return null;

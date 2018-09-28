@@ -118,5 +118,15 @@ namespace ExamManagementSystem.Controllers
         }
 
 
+
+
+        //Get Organization Code
+        public JsonResult MakeOrganizationCode()
+        {
+            var data = _organizationManager.MakeOrganizationCode();
+            //return Json(data);
+            return Json(data.Count);
+        }
+
     }
 }

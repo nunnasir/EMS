@@ -107,8 +107,76 @@
             </dl>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="exam"></div>
-        <div role="tabpanel" class="tab-pane fade" id="participant"></div>
-        <div role="tabpanel" class="tab-pane fade" id="trainer"></div>
+        <div role="tabpanel" class="tab-pane fade" id="participant">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(c=>c.Participant.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(c => c.Participant.Email)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.Participants)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(c => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(c => item.Email)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit","Participant", new {id = item.Id}, null) |
+                                @Html.ActionLink("Details", "Details","Participant", new {id = item.Id}, null) |
+                                @Html.ActionLink("Remove", "Delete","Participant", new {id = item.Id}, null)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="trainer">
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(c=>c.Trainer.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(c => c.Trainer.Email)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Trainers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(c => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(c => item.Email)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit","Trainer", new {id = item.Id}, null) |
+                            @Html.ActionLink("Details", "Details","Trainer", new {id = item.Id}, null) |
+                            @Html.ActionLink("Remove", "Delete","Trainer", new {id = item.Id}, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        </div>
     </div>
 
     

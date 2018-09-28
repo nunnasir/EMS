@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label for="Code" class="col-md-2 control-label">Code</label>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code" })
+                        @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code", id = "CourseId", @readonly = "readonly" })
                         @Html.ValidationMessageFor(c => c.Code, null, new { @class = "text-danger" })
                     </div>
                 </div>
@@ -94,5 +94,6 @@
 
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/CourseEntry/CourseDetail.js"></script>
 </body>
 </html>

@@ -94,5 +94,10 @@ namespace Repository
 
             return false;
         }
+
+        public List<Organization> MakeOrganizationCode()
+        {
+            return db.Organizations.ToList();
+        }
     }
 }

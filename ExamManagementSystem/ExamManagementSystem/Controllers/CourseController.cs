@@ -149,25 +149,16 @@ namespace ExamManagementSystem.Controllers
         }
 
 
-        //Select DropDOwn Method
-        //private void GetDrodownSelectItemList(Course course)
-        //{
-        //    List<Organization> organizations = _courseManager.GetAll();
 
-        //    List<SelectListItem> selectListItems = new List<SelectListItem>();
 
-            
+        //Get Course Code
+        public JsonResult MakeCourseCode(int id)
+        {
+            var data = _courseManager.MakeCourseCode(id);
+            //return Json(data);
+            return Json(data.Count);
+        }
 
-        //    foreach (var organizationData in organizations)
-        //    {
-        //        SelectListItem selectListItem = new SelectListItem();
-        //        selectListItem.Text = organizationData.Name;
-        //        selectListItem.Value = organizationData.Id.ToString();
 
-        //        selectListItems.Add(selectListItem);
-        //    }
-
-        //    course.OrganizationListItem = selectListItems;
-        //}
     }
 }

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Entry</title>
+    <title>Organization Entry</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="Code" class="col-md-2 control-label">Code</label>
                 <div class="col-md-10">
-                    @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code" })
+                    @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code", id="OrganizationCode", @readonly = "readonly" })
                     @Html.ValidationMessageFor(c => c.Code, null, new { @class = "text-danger" })
                 </div>
             </div>
@@ -71,23 +71,8 @@
     
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-
-
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AppScript/OrganizationEntry/OrganizationDetail.js"></script>
 </body>
 </html>

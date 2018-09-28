@@ -50,5 +50,10 @@ namespace BLL
             List<Course> courses = _courseRepository.GetCourseBySearch(criteria);
             return courses;
         }
+
+        public List<Course> MakeCourseCode(int id)
+        {
+            return _courseRepository.MakeCourseCode(id);
+        }
     }
 }

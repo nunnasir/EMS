@@ -128,5 +128,9 @@ namespace Repository
             return cities;
         }
 
+        public List<Participant> MakeParticipantRegNo(int id)
+        {
+            return db.Participants.ToList();
+        }
     }
 }

@@ -167,7 +167,7 @@ namespace ExamManagementSystem.Controllers
             if (id > 0)
             {
                 var dataList = _participantManager.GetCourseByOrganizationId(id);
-                return Json(dataList);
+                return Json(dataList.Select(c => new { Id = c.Id, Name = c.Name }));
             }
 
             return null;
@@ -184,6 +184,20 @@ namespace ExamManagementSystem.Controllers
 
             return null;
         }
+
+
+        //Make Participant Code
+        public JsonResult MakeParticipantRegNo(int id)
+        {
+            if (id > 0)
+            {
+                var dataList = _participantManager.MakeParticipantRegNo(id);
+                return Json(dataList.Count);
+            }
+
+            return null;
+        }
+
 
     }
 }

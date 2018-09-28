@@ -109,11 +109,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\image-1.jpg" />
+    <Content Include="Scripts\AppScript\OrganizationEntry\OrganizationDetail.js" />
     <Content Include="Scripts\AppScript\ParticipantEntry\ParticipantDetail.js" />
     <Content Include="Scripts\AppScript\TrainerEntry\TrainerDetail.js" />
     <Content Include="Scripts\AppScript\BatchEntry\BatchDetail.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CourseEntry\CourseDetail.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config">
