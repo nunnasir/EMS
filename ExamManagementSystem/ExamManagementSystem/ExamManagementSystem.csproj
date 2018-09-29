@@ -164,6 +164,9 @@
     <Content Include="Views\Exam\Entry.cshtml" />
     <Content Include="Views\Exam\Edit.cshtml" />
     <Content Include="Views\Exam\Details.cshtml" />
+    <Content Include="Views\Exam\QuestionEntry.cshtml" />
+    <Content Include="Views\Exam\QuestionIndex.cshtml" />
+    <Content Include="Views\Exam\QuestionDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

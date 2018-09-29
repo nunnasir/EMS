@@ -1,0 +1,173 @@
+﻿
+@model Models.Question
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Question and Answer Entry</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Question and Answer Entry Form</h1>
+        </div>
+        <div class="col-md-4">
+            <p class="pull-right" style="margin-top: 35px;">
+                @Html.ActionLink("Back to List", "QuestionIndex")
+            </p>
+        </div>
+    </div>
+
+    <hr/>
+    @Html.ValidationSummary(true, null, new {@class = "text-danger"})
+
+    <form method="post">
+        <div class="form-horizontal">
+
+            <div class="panel-group">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">Question Entry</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="Organization" class="col-md-2 control-label">Organization</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new {@class = "form-control"})
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Course" class="col-md-2 control-label">Course</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new {@class = "form-control", id = "courseListDD"})
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Course" class="col-md-2 control-label">Exam Topic</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(c => c.ExamId, new List<SelectListItem>(), new {@class = "form-control", id = "examListDD"})
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Question" class="col-md-10">Question</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Mark" class="col-md-4 control-label">Mark</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(c => c.Marks, new {@class = "form-control"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="QOrder" class="col-md-4 control-label">Q. Order</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(c => c.QOrder, new {@class = "form-control", id = "QOrder", @readonly = "readonly"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(c => c.Name, new {@class = "form-control", rows = "3"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-group">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">Option Add</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="CorrectAns" value="True"> True
+                                    </label>
+
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBox("QOption", null, new {@class = "form-control"})
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-default" id="AddButton" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Option</th>
+                                    <th>Answer</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="OptionListTable">
+                                @if (Model != null && Model.QuestionOptionses != null && Model.QuestionOptionses.Count > 0)
+                                {
+                                    var sl = 0;
+                                    foreach (var optionse in Model.QuestionOptionses)
+                                    {
+                                        <tr>
+                                            <td>@(++sl)</td>
+                                            <td>@optionse.Name</td>
+                                            <td>@optionse.IsAnswer</td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <br/>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AppScript/ExamEntry/ExamDetail.js"></script>
+</body>
+</html>

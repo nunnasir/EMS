@@ -68,5 +68,31 @@ namespace BLL
             return _examRepository.MakeExamCode(id);
         }
 
+        public List<Exam> GetExamByCourse(int id)
+        {
+            return _examRepository.GetExamByCourse(id);
+        }
+
+        public bool QuestionAdd(Question question)
+        {
+            return _examRepository.QuestionAdd(question);
+        }
+
+        public List<Question> MakeQuestionOrder(int id)
+        {
+            return _examRepository.MakeQuestionOrder(id);
+        }
+
+        //Search Question
+        public List<Question> GetQuestionBySearch(QuestionSearchCriteria criteria)
+        {
+            return _examRepository.GetQuestionBySearch(criteria);
+        }
+
+        //Get Question By Id
+        public Question GetQuestionById(int id)
+        {
+            return _examRepository.GetQuestionById(id);
+        }
     }
 }

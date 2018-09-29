@@ -106,7 +106,7 @@ namespace ExamManagementSystem.Controllers
 
 
 
-        //Delete Course
+        //Delete Exam
         public ActionResult Delete(int id)
         {
 
@@ -126,7 +126,7 @@ namespace ExamManagementSystem.Controllers
         }
 
 
-        //View Course
+        //View Exam
         public ActionResult Details(int id)
         {
             Exam exam = new Exam();
@@ -143,6 +143,68 @@ namespace ExamManagementSystem.Controllers
 
             return View();
         }
+
+
+
+
+        //Question Entry Page
+        public ActionResult QuestionEntry()
+        {
+            var model = new Question();
+            model.OrganizationListItem = GetOrganizationList();
+
+            return View(model);
+        }
+
+
+        //Question Save
+        [HttpPost]
+        public ActionResult QuestionEntry(Question question)
+        {
+            if (ModelState.IsValid && question.QuestionOptionses != null && question.QuestionOptionses.Count > 0)
+            {
+                bool isAdded = _examManager.QuestionAdd(question);
+                if (isAdded)
+                {
+                    return RedirectToAction("QuestionEntry");
+                }
+            }
+
+            return View();
+        }
+
+
+        //Question Index with search
+        public ActionResult QuestionIndex(QuestionSearchCriteria model)
+        {
+            var questions = _examManager.GetQuestionBySearch(model);
+
+            if (questions == null)
+            {
+                questions = new List<Question>();
+            }
+            model.OrganizationListItem = GetOrganizationList();
+
+            model.Questions = questions;
+
+            return View(model);
+        }
+
+        //Question Details
+        public ActionResult QuestionDetails(int id)
+        {
+            Question question = new Question();
+
+            if (id > 0)
+            {
+                question = _examManager.GetQuestionById(id);
+
+                return View(question);
+            }
+
+            return View();
+        }
+
 
 
         //Select DOrganization
@@ -173,12 +235,31 @@ namespace ExamManagementSystem.Controllers
                 .Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
         }
 
+        //Select Exam Type
+        public JsonResult GetExamByCourse(int id)
+        {
+            if (id > 0)
+            {
+                var dataList = _examManager.GetExamByCourse(id);
+                return Json(dataList.Select(c => new { Id = c.Id, Name = c.Topic}));
+            }
+
+            return null;
+        }
 
 
         //Get Exam Code
         public JsonResult MakeExamCode(int id)
         {
             var data = _examManager.MakeExamCode(id);
+            //return Json(data);
+            return Json(data.Count);
+        }
+
+        //Get Question Order
+        public JsonResult MakeQuestionOrder(int id)
+        {
+            var data = _examManager.MakeQuestionOrder(id);
             //return Json(data);
             return Json(data.Count);
         }

@@ -108,5 +108,53 @@ namespace Repository
         }
 
 
+        public List<Exam> GetExamByCourse(int id)
+        {
+            List<Exam> exams = db.Exams.Where(c => c.CourseId == id).ToList();
+            return exams;
+        }
+
+        public bool QuestionAdd(Question question)
+        {
+            db.Questions.Add(question);
+            return db.SaveChanges() > 0;
+        }
+
+        public List<Question> MakeQuestionOrder(int id)
+        {
+            return db.Questions.Where(c => c.ExamId == id).ToList();
+        }
+
+        //Question Search
+        public List<Question> GetQuestionBySearch(QuestionSearchCriteria criteria)
+        {
+            IQueryable<Question> questions = db.Questions.AsQueryable();
+
+            if (criteria.OrganizationId > 0)
+            {
+                questions = questions.Where(c =>
+                    c.OrganizationId.ToString().ToLower().Contains(criteria.OrganizationId.ToString().ToLower()));
+            }
+
+            if (criteria.CourseId > 0)
+            {
+                questions = questions.Where(c =>
+                    c.CourseId.ToString().ToLower().Contains(criteria.CourseId.ToString().ToLower()));
+            }
+
+            if (criteria.ExamId > 0)
+            {
+                questions = questions.Where(c =>
+                    c.ExamId.ToString().ToLower().Contains(criteria.ExamId.ToString().ToLower()));
+            }
+
+            return questions.ToList();
+
+        }
+
+        public Question GetQuestionById(int id)
+        {
+            return db.Questions.Where(c => c.Id == id).FirstOrDefault();
+        }
     }
 }

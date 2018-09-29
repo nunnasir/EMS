@@ -84,6 +84,7 @@
     <Compile Include="SearchCriteria\ExamSearchCriteria.cs" />
     <Compile Include="SearchCriteria\OrganizationSearchCriteria.cs" />
     <Compile Include="SearchCriteria\ParticipantSearchCriteria.cs" />
+    <Compile Include="SearchCriteria\QuestionSearchCriteria.cs" />
     <Compile Include="SearchCriteria\TrainerSearchCriteria.cs" />
     <Compile Include="Trainer.cs" />
     <Compile Include="ViewModels\BatchEntryVm.cs" />
