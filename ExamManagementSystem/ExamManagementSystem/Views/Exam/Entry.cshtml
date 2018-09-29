@@ -1,0 +1,84 @@
+﻿@model Models.ViewModels.ExamEntryVm
+@*@model Models.Trainer*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Exam Entry</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Exam Entry Form</h1>
+        <hr />
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+        @*<form method="post" action="" enctype="multipart/form-data">*@
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="Organization" class="col-md-2 control-label">Organization</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Course" class="col-md-2 control-label">Course</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ExamType" class="col-md-2 control-label">Exam Type</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.ExamTypeId, Model.ExamTypeListItem, "Select Exam Type", new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Code" class="col-md-2 control-label">Code</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.Code, new { @class = "form-control", placeholder = "Code", id="ExamCode", @readonly ="readonly" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Topic" class="col-md-2 control-label">Topic</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.Topic, new { @class = "form-control", placeholder = "Exam Topic" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="FUllMarks" class="col-md-2 control-label">Full Marks</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.FullMarks, new { @class = "form-control", placeholder = "Full Marks" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <br />
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AppScript/ExamEntry/ExamDetail.js"></script>
+</body>
+</html>

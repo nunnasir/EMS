@@ -117,6 +117,10 @@
     <Compile Include="Migrations\201809271850461_Update_Participant_Model.Designer.cs">
       <DependentUpon>201809271850461_Update_Participant_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809290547376_Exam_Exam_Type_Model.cs" />
+    <Compile Include="Migrations\201809290547376_Exam_Exam_Type_Model.Designer.cs">
+      <DependentUpon>201809290547376_Exam_Exam_Type_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809271850461_Update_Participant_Model.resx">
       <DependentUpon>201809271850461_Update_Participant_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809290547376_Exam_Exam_Type_Model.resx">
+      <DependentUpon>201809290547376_Exam_Exam_Type_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

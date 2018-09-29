@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BatchManager.cs" />
     <Compile Include="CourseManager.cs" />
+    <Compile Include="ExamManager.cs" />
     <Compile Include="OrganizationManager.cs" />
     <Compile Include="ParticipantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,5 +17,7 @@ namespace DatabaseContexts
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<ExamType> ExamTypes { get; set; }
     }
 }

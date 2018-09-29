@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using AutoMapper;
 using BLL;
 using Models;
@@ -13,49 +11,51 @@ using Models.ViewModels;
 
 namespace ExamManagementSystem.Controllers
 {
-    public class CourseController : Controller
+    public class ExamController : Controller
     {
-        CourseManager _courseManager = new CourseManager();
+        ExamManager _examManager = new ExamManager();
 
-
-        //INdex with Search Course
-        public ActionResult Index(CourseSearchCriteria model)
+        //Index with Search Exam
+        public ActionResult Index(ExamSearchCriteria model)
         {
-            var courses = _courseManager.GetCourseBySearch(model);
-            
-            if (courses == null)
+            var exams = _examManager.GetExamBySearch(model);
+
+            if (exams == null)
             {
-                courses = new List<Course>();
+                exams = new List<Exam>();
             }
 
             model.OrganizationListItem = GetOrganizationList();
-
-            model.Course = courses;
-            return View(model);
-        }
-
-        //Get Organization on COurse Entry
-        public ActionResult CourseEntry()
-        {
-            var model = new CourseEntryVm();
-            model.OrganizationListItem = GetOrganizationList();
+            model.ExamTypeListItem = GetAllExamTypes();
             
+            model.Exams = exams;
             return View(model);
         }
 
-        //Save New Course
+
+        //Exam Entry Page
+        public ActionResult Entry()
+        {
+            var model = new ExamEntryVm();
+            model.OrganizationListItem = GetOrganizationList();
+            model.ExamTypeListItem = GetAllExamTypes();
+
+            return View(model);
+        }
+
+
+        //Save New Exam
         [HttpPost]
-        public ActionResult CourseEntry(CourseEntryVm model)
+        public ActionResult Entry(ExamEntryVm model)
         {
             if (ModelState.IsValid)
             {
-                var course = Mapper.Map<Course>(model);
-                
-                bool isAdded = _courseManager.Add(course);
-                
+                var exam = Mapper.Map<Exam>(model);
+
+                bool isAdded = _examManager.Add(exam);
+
                 if (isAdded)
                 {
-                    //return RedirectToAction("CourseInformation", new {course.Id });
                     return RedirectToAction("Index");
                 }
 
@@ -64,17 +64,19 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
-        //Edit Course
-        public ActionResult CourseInformation(int id)
+
+        //Edit Exam
+        public ActionResult Edit(int id)
         {
-            Course course = new Course();
+            Exam exam = new Exam();
 
             if (id > 0)
             {
-                course =  _courseManager.GetById(id);
-                var model = Mapper.Map<CourseEntryVm>(course);
+                exam = _examManager.GetById(id);
+                var model = Mapper.Map<ExamEntryVm>(exam);
 
                 model.OrganizationListItem = GetOrganizationList();
+                model.ExamTypeListItem = GetAllExamTypes();
 
                 return View(model);
             }
@@ -82,14 +84,16 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
-        //Update Course
+
+
+        //Update Exam
         [HttpPost]
-        public ActionResult CourseInformation(CourseEntryVm model)
+        public ActionResult Edit(ExamEntryVm model)
         {
             if (ModelState.IsValid)
             {
-                var course = Mapper.Map<Course>(model);
-                bool isUpdate = _courseManager.Update(course);
+                var exam = Mapper.Map<Exam>(model);
+                bool isUpdate = _examManager.Update(exam);
                 if (isUpdate)
                 {
                     return RedirectToAction("index");
@@ -101,13 +105,14 @@ namespace ExamManagementSystem.Controllers
         }
 
 
+
         //Delete Course
         public ActionResult Delete(int id)
         {
 
             if (id > 0)
             {
-                bool isDeleted = _courseManager.Deleted(id);
+                bool isDeleted = _examManager.Deleted(id);
                 if (isDeleted)
                 {
                     //return View("Index");
@@ -124,12 +129,12 @@ namespace ExamManagementSystem.Controllers
         //View Course
         public ActionResult Details(int id)
         {
-            Course course = new Course();
+            Exam exam = new Exam();
 
             if (id > 0)
             {
-                course = _courseManager.GetById(id);
-                var model = Mapper.Map<CourseEntryVm>(course);
+                exam = _examManager.GetById(id);
+                var model = Mapper.Map<ExamEntryVm>(exam);
 
                 model.OrganizationListItem = GetOrganizationList();
 
@@ -139,23 +144,41 @@ namespace ExamManagementSystem.Controllers
             return View();
         }
 
-        //Search Course
 
-
-        //Select DropDOwn Method
+        //Select DOrganization
         private List<SelectListItem> GetOrganizationList()
         {
-             return _courseManager.GetAll()
+            return _examManager.GetAllOrganizations()
+                .Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
+        }
+
+
+        //Get Courses BY Organization
+        public JsonResult GetCourseByOrganizationId(int id)
+        {
+            if (id > 0)
+            {
+                var dataList = _examManager.GetAllCourses(id);
+                return Json(dataList.Select(c => new { Id = c.Id, Name = c.Name }));
+            }
+
+            return null;
+        }
+
+
+        //Select Exam Type
+        private List<SelectListItem> GetAllExamTypes()
+        {
+            return _examManager.GetAllExamTypes()
                 .Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
         }
 
 
 
-
-        //Get Course Code
-        public JsonResult MakeCourseCode(int id)
+        //Get Exam Code
+        public JsonResult MakeExamCode(int id)
         {
-            var data = _courseManager.MakeCourseCode(id);
+            var data = _examManager.MakeExamCode(id);
             //return Json(data);
             return Json(data.Count);
         }
