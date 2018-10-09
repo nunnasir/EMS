@@ -2,20 +2,15 @@
 @model Models.Question
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Question Entry";
 }
+    
+    @section Styles
+    {
+        <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+    }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Question and Answer Entry</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
     <div class="row">
         <div class="col-md-8">
             <h1>Question and Answer Entry Form</h1>
@@ -165,9 +160,8 @@
     </form>
     <br/>
     @*@Html.ActionLink("Back to List", "Index")*@
-</div>
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/AppScript/ExamEntry/ExamDetail.js"></script>
-</body>
-</html>
+    
+    @section Scripts
+    {
+        <script src="~/Scripts/AppScript/ExamEntry/ExamDetail.js"></script>
+    }

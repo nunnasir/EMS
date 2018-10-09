@@ -2,132 +2,128 @@
 @*@model Models.Trainer*@
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Participant Entry";
 }
 
-<!DOCTYPE html>
+    
+    @section Styles
+    {
+        <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+    }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Entry</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <h1>Participant Entry Form</h1>
-        <hr />
-        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
-        
-        @*<form method="post" action="" enctype="multipart/form-data">*@
-        <form method="post" enctype="multipart/form-data">
-            <div class="form-horizontal">
+    <h1>Participant Entry Form</h1>
+    <hr/>
+    @Html.ValidationSummary(true, null, new {@class = "text-danger"})
 
-                <div class="form-group">
-                    <label for="Organization" class="col-md-2 control-label">Organization</label>
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new { @class = "form-control" })
-                    </div>
+    @*<form method="post" action="" enctype="multipart/form-data">*@
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <label for="Organization" class="col-md-2 control-label">Organization</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new {@class = "form-control"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="Course" class="col-md-2 control-label">Course</label>
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
-                    </div>
+            <div class="form-group">
+                <label for="Course" class="col-md-2 control-label">Course</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new {@class = "form-control", id = "courseListDD"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="Batch" class="col-md-2 control-label">Batch</label>
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.BatchId, new List<SelectListItem>(), new { @class = "form-control", id = "batchListDD" })
-                    </div>
+            <div class="form-group">
+                <label for="Batch" class="col-md-2 control-label">Batch</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(c => c.BatchId, new List<SelectListItem>(), new {@class = "form-control", id = "batchListDD"})
                 </div>
-                
-                <div class="form-group">
-                    <label for="RegNo" class="col-md-2 control-label">Reg No</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.RegNo, new { @class = "form-control", id = "RegNumber", @readonly = "readonly" })
-                    </div>
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="Name" class="col-md-2 control-label">Name</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder = "Name" })
-                    </div>
+            <div class="form-group">
+                <label for="RegNo" class="col-md-2 control-label">Reg No</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.RegNo, new {@class = "form-control", id = "RegNumber", @readonly = "readonly"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="ContactNo" class="col-md-2 control-label">Contact No</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.ContactNo, new { @class = "form-control", placeholder = "Contact No" })
-                    </div>
+            <div class="form-group">
+                <label for="Name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Name, new {@class = "form-control", placeholder = "Name"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="Email" class="col-md-2 control-label">Email</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.Email, new { @class = "form-control", placeholder = "Email" })
-                    </div>
+            <div class="form-group">
+                <label for="ContactNo" class="col-md-2 control-label">Contact No</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.ContactNo, new {@class = "form-control", placeholder = "Contact No"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="AddressLine1" class="col-md-2 control-label">Address Line 1</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.AddressLine1, new { @class = "form-control", placeholder = "Address Line" })
-                    </div>
+            <div class="form-group">
+                <label for="Email" class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Email, new {@class = "form-control", placeholder = "Email"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="AddressLine2" class="col-md-2 control-label">Address Line 2</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.AddressLine2, new { @class = "form-control", placeholder = "Address Line" })
-                    </div>
+            <div class="form-group">
+                <label for="AddressLine1" class="col-md-2 control-label">Address Line 1</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.AddressLine1, new {@class = "form-control", placeholder = "Address Line"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="Country" class="col-md-2 control-label">Country</label>
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.CountryId, Model.CountryList, "Select Country", new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                <label for="AddressLine2" class="col-md-2 control-label">Address Line 2</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.AddressLine2, new {@class = "form-control", placeholder = "Address Line"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="City" class="col-md-2 control-label">City</label>
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.CityId, new List<SelectListItem>(), new { @class = "form-control", id = "cityListDD" })
-                    </div>
+            <div class="form-group">
+                <label for="Country" class="col-md-2 control-label">Country</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(c => c.CountryId, Model.CountryList, "Select Country", new {@class = "form-control"})
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="PostalCode" class="col-md-2 control-label">Postal Code</label>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.PostalCode, new { @class = "form-control", placeholder = "Postal Code" })
-                    </div>
+            <div class="form-group">
+                <label for="City" class="col-md-2 control-label">City</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(c => c.CityId, new List<SelectListItem>(), new {@class = "form-control", id = "cityListDD"})
                 </div>
+            </div>
 
-                @*<div class="form-group ">
+            <div class="form-group">
+                <label for="PostalCode" class="col-md-2 control-label">Postal Code</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.PostalCode, new {@class = "form-control", placeholder = "Postal Code"})
+                </div>
+            </div>
+
+            @*<div class="form-group ">
                     <label for="Image" class="col-md-2 control-label">Image</label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(c => c.Image, new { type = "file", name = "Image" })
                     </div>
                 </div>*@
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                    </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
                 </div>
-
             </div>
-        </form>
-        <br/>
-        @*@Html.ActionLink("Back to List", "Index")*@
+
     </div>
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+</form>
+<br/>
+@*@Html.ActionLink("Back to List", "Index")*@
+
+@section Scripts
+{
     <script src="~/Scripts/AppScript/ParticipantEntry/ParticipantDetail.js"></script>
-</body>
-</html>
+}
+

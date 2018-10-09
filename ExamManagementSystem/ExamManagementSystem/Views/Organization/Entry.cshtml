@@ -1,20 +1,10 @@
 ﻿@model Models.ViewModels.OrganizationEntryVm
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Organization Entry";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Organization Entry</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
-    
     <h1>Organization Entry Form</h1>
     <hr/>
     @Html.ValidationSummary(true, null, new {@class="text-danger"})
@@ -69,10 +59,8 @@
         </div>
     </form>
     
-</div>
+    @section Scripts
+    {
+        <script src="~/Scripts/AppScript/OrganizationEntry/OrganizationDetail.js"></script>
+    }
 
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/AppScript/OrganizationEntry/OrganizationDetail.js"></script>
-</body>
-</html>

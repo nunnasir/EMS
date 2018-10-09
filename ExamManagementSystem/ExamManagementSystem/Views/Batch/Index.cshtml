@@ -1,22 +1,14 @@
 ﻿@model Models.SearchCriteria.BatchSearchCriteria
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Batch Search";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
-    <h1>All Bathc Info</h1>
+<h1>All Batch Info</h1>
     <hr/>
-    
+
     @using (Html.BeginForm("Index", "Batch", FormMethod.Get, new {@class = "form-horizontal"}))
     {
         <div class="row">
@@ -31,11 +23,11 @@
                 <div class="form-group">
                     <label for="BatchNo" class="col-md-3 control-label">Batch No</label>
                     <div class="col-md-9">
-                        <input id="searchTextbox" name="BatchNo" class="form-control" type="text" placeholder="Batch No" />
+                        <input id="searchTextbox" name="BatchNo" class="form-control" type="text" placeholder="Batch No"/>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="StartDate" class="col-md-3 control-label">Start Date</label>
@@ -43,14 +35,14 @@
                         <input id="searchTextbox" name="StartDate" class="form-control" type="date"/>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="EndDate" class="col-md-3 control-label">End Date</label>
                     <div class="col-md-9">
                         <input id="searchTextbox" name="EndDate" class="form-control" type="date" disabled="disabled"/>
                     </div>
                 </div>
-               
+
                 <div class="form-group">
                     <div class="col-md-4 pull-right">
                         <input id="searchButton" type="submit" value="Search" class="btn-success form-control"/>
@@ -59,7 +51,7 @@
             </div>
         </div>
     }
-    
+
     <hr/>
     <p>
         @Html.ActionLink("Create New", "Entry")
@@ -120,6 +112,3 @@
 
         </table>
     </div>
-</div>
-</body>
-</html>

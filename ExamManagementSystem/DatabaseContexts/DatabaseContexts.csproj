@@ -125,6 +125,10 @@
     <Compile Include="Migrations\201809290944094_add_question_questionOption_Model.Designer.cs">
       <DependentUpon>201809290944094_add_question_questionOption_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810090746319_update-models.cs" />
+    <Compile Include="Migrations\201810090746319_update-models.Designer.cs">
+      <DependentUpon>201810090746319_update-models.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -195,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809290944094_add_question_questionOption_Model.resx">
       <DependentUpon>201809290944094_add_question_questionOption_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810090746319_update-models.resx">
+      <DependentUpon>201810090746319_update-models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

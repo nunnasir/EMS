@@ -1,107 +1,98 @@
 ﻿@model Models.SearchCriteria.QuestionSearchCriteria
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Question Search";
 }
 
-<!DOCTYPE html>
+    <h1 class="text-primary">All Question</h1>
+    <hr/>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Question Index</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <h1 class="text-primary">All Question</h1>
-        <hr />
-
-        @using (Html.BeginForm("QuestionIndex", "Exam", FormMethod.Get, new { @class = "form-horizontal" }))
-        {
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="Organization" class="col-md-3 control-label">Organization</label>
-                        <div class="col-md-9">
-                            @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new { @class = "form-control" })
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="Course" class="col-md-3 control-label">Course</label>
-                        <div class="col-md-9">
-                            @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
-                        </div>
+    @using (Html.BeginForm("QuestionIndex", "Exam", FormMethod.Get, new {@class = "form-horizontal"}))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Organization" class="col-md-3 control-label">Organization</label>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationListItem, "Select Organization", new {@class = "form-control"})
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="ExamTopic" class="col-md-3 control-label">Exam Topic</label>
-                        <div class="col-md-9">
-                            @Html.DropDownListFor(c => c.ExamId, new List<SelectListItem>(), new { @class = "form-control", id = "examListDD" })
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-md-3 pull-right">
-                            <input id="searchButton" type="submit" value="Search" class="btn-success form-control" />
-                        </div>
+                <div class="form-group">
+                    <label for="Course" class="col-md-3 control-label">Course</label>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new {@class = "form-control", id = "courseListDD"})
                     </div>
-
                 </div>
             </div>
 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ExamTopic" class="col-md-3 control-label">Exam Topic</label>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(c => c.ExamId, new List<SelectListItem>(), new {@class = "form-control", id = "examListDD"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 pull-right">
+                        <input id="searchButton" type="submit" value="Search" class="btn-success form-control"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    }
+
+    <hr/>
+    <p>
+        @Html.ActionLink("Create New Question", "QuestionEntry")
+    </p>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                Order
+            </th>
+            <th>
+                Question
+            </th>
+            <th>
+                Options
+            </th>
+
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model.Questions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionOptionses.Count)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @Html.ActionLink("Details", "QuestionDetails", new {id = item.Id})
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
         }
 
-        <hr />
-        <p>
-            @Html.ActionLink("Create New Question", "QuestionEntry")
-        </p>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-                <tr>
-                    <th>
-                        Order
-                    </th>
-                    <th>
-                       Question
-                    </th>
-                    <th>
-                        Options
-                    </th>
+    </table>
+</div>
 
-                    <th>Action</th>
-                </tr>
-
-                @foreach (var item in Model.Questions)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QOrder)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QuestionOptionses.Count)
-                        </td>
-
-                        <td>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
-                            @Html.ActionLink("Details", "QuestionDetails", new { id = item.Id }) 
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-    </div>
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+@section Scripts
+{
     <script src="~/Scripts/AppScript/ExamEntry/ExamDetail.js"></script>
-</body>
-</html>
+}
+

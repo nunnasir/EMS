@@ -1,21 +1,13 @@
 ﻿@model Models.ViewModels.OrganizationEntryVm
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Organization Edit";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Entry</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
 
-        <h1>Organization Entry Form</h1>
+        <h1>Organization Edit Form</h1>
         <hr />
         @Html.ValidationSummary(true, null, new { @class = "text-danger" })
 
@@ -69,7 +61,3 @@
             </div>
         </form>
 
-    </div>
-
-</body>
-</html>

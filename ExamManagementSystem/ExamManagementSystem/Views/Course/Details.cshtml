@@ -1,32 +1,30 @@
 ﻿@model Models.ViewModels.CourseEntryVm
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Course Information";
 }
-
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
+
+    @section Styles
+    {
+        <link href="~/Content/AppCustomStyle.css" rel="stylesheet" />
+    }
+
     <div class="row">
-        <div class="col-md-6"><h1>@Model.Name</h1></div>
+        <div class="col-md-6">
+            <h1>@Model.Name</h1></div>
         <div class="col-md-6 detail-top-right">
             <p class="text-right">
-                @Html.ActionLink("Edit", "CourseInformation", new { id = Model.Id }) |
+                @Html.ActionLink("Edit", "CourseInformation", new {id = Model.Id}) |
                 @Html.ActionLink("Back to List", "Index")
             </p>
         </div>
     </div>
 
     <hr/>
-    
+
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Basic Info</a></li>
@@ -35,7 +33,7 @@
         <li role="presentation"><a href="#participant" aria-controls="participant" role="tab" data-toggle="tab">Participants</a></li>
         <li role="presentation"><a href="#trainer" aria-controls="trainer" role="tab" data-toggle="tab">Trainers</a></li>
     </ul>
-    
+
     <!-- Tab Pans -->
     <div class="tab-content">
         <!-- Basic Content -->
@@ -112,7 +110,7 @@
                 <table class="table table-bordered table-striped table-hover">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(c=>c.Participant.Name)
+                            @Html.DisplayNameFor(c => c.Participant.Name)
                         </th>
                         <th>
                             @Html.DisplayNameFor(c => c.Participant.Email)
@@ -132,9 +130,9 @@
                                 @Html.DisplayFor(c => item.Email)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit","Participant", new {id = item.Id}, null) |
-                                @Html.ActionLink("Details", "Details","Participant", new {id = item.Id}, null) |
-                                @Html.ActionLink("Remove", "Delete","Participant", new {id = item.Id}, null)
+                                @Html.ActionLink("Edit", "Edit", "Participant", new {id = item.Id}, null) |
+                                @Html.ActionLink("Details", "Details", "Participant", new {id = item.Id}, null) |
+                                @Html.ActionLink("Remove", "Delete", "Participant", new {id = item.Id}, null)
                             </td>
                         </tr>
                     }
@@ -144,50 +142,47 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="trainer">
             <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(c=>c.Trainer.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(c => c.Trainer.Email)
-                    </th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
-
-                @foreach (var item in Model.Trainers)
-                {
+                <table class="table table-bordered table-striped table-hover">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(c => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(c => item.Email)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit","Trainer", new {id = item.Id}, null) |
-                            @Html.ActionLink("Details", "Details","Trainer", new {id = item.Id}, null) |
-                            @Html.ActionLink("Remove", "Delete","Trainer", new {id = item.Id}, null)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(c => c.Trainer.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(c => c.Trainer.Email)
+                        </th>
+                        <th>
+                            Action
+                        </th>
                     </tr>
-                }
 
-            </table>
-        </div>
+                    @foreach (var item in Model.Trainers)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(c => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(c => item.Email)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "Trainer", new {id = item.Id}, null) |
+                                @Html.ActionLink("Details", "Details", "Trainer", new {id = item.Id}, null) |
+                                @Html.ActionLink("Remove", "Delete", "Trainer", new {id = item.Id}, null)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
         </div>
     </div>
 
-    
+
 
     <p class="text-right">
         @Html.ActionLink("Edit", "CourseInformation", new {id = Model.Id}) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-</div>
-
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
-</html>
+    
+    
+    

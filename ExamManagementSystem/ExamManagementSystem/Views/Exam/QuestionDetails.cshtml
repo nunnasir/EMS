@@ -1,53 +1,41 @@
 ﻿@model Models.Question
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Question Details";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>QuestionDetails</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <h4 class="text-success">Question</h4>
-        <hr />
-        <dl class="dl-horizontal">
-           
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Marks)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Marks)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.QuestionOptionses)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.QuestionOptionses.Count)
-            </dd>
-    
-        </dl>
-        <p>
-            @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-            @Html.ActionLink("Back to List", "QuestionIndex")
-        </p>
-    </div>
-    
-</body>
-</html>
+    <h4 class="text-success">Question</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionOptionses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionOptionses.Count)
+        </dd>
+
+    </dl>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @Html.ActionLink("Back to List", "QuestionIndex")
+    </p>

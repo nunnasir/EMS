@@ -2,22 +2,14 @@
 @model Models.SearchCriteria.ParticipantSearchCriteria
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Participant Search";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
     <h1 class="text-primary">All Participant Information</h1>
     <hr/>
-        
+
     @using (Html.BeginForm("Index", "Participant", FormMethod.Get, new {@class = "form-horizontal"}))
     {
         <div class="row">
@@ -29,21 +21,21 @@
                         <input id="searchTextbox" name="Name" class="form-control" type="text" placeholder="Name"/>
                     </div>
                 </div>
-                    
+
                 <div class="form-group">
                     <label for="Organization" class="col-md-3 control-label">Organization</label>
                     <div class="col-md-9">
-                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new { @class = "form-control" })
+                        @Html.DropDownListFor(c => c.OrganizationId, Model.OrganizationList, "Select Organization", new {@class = "form-control"})
                     </div>
                 </div>
-                    
+
                 <div class="form-group">
                     <label for="Course" class="col-md-3 control-label">Course</label>
                     <div class="col-md-9">
-                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new { @class = "form-control", id = "courseListDD" })
+                        @Html.DropDownListFor(c => c.CourseId, new List<SelectListItem>(), new {@class = "form-control", id = "courseListDD"})
                     </div>
                 </div>
-                    
+
                 @*<div class="form-group">
                     <label for="ContactNo" class="col-md-3 control-label">Contact No</label>
                     <div class="col-md-9">
@@ -52,29 +44,29 @@
                 </div>*@
 
             </div>
-                
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="Email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
-                        <input id="searchTextbox" name="Email" class="form-control" type="text" placeholder="Email" />
+                        <input id="searchTextbox" name="Email" class="form-control" type="text" placeholder="Email"/>
                     </div>
                 </div>
-                    
+
                 <div class="form-group">
                     <label for="Country" class="col-md-3 control-label">Country</label>
                     <div class="col-md-9">
-                        @Html.DropDownListFor(c => c.CountryId, Model.CountryList, "Select Country", new { @class = "form-control" })
+                        @Html.DropDownListFor(c => c.CountryId, Model.CountryList, "Select Country", new {@class = "form-control"})
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="City" class="col-md-3 control-label">City</label>
                     <div class="col-md-9">
-                        @Html.DropDownListFor(c => c.CityId, new List<SelectListItem>(), new { @class = "form-control", id = "cityListDD" })
+                        @Html.DropDownListFor(c => c.CityId, new List<SelectListItem>(), new {@class = "form-control", id = "cityListDD"})
                     </div>
                 </div>
-                    
+
                 <div class="form-group">
                     <div class="col-md-3 pull-right">
                         <input id="searchButton" type="submit" value="Search" class="btn-success form-control"/>
@@ -84,12 +76,12 @@
             </div>
         </div>
     }
-    
-    <hr />
+
+    <hr/>
     <p>
         @Html.ActionLink("Create New Participant", "Entry")
     </p>
-    
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tr>
@@ -113,7 +105,7 @@
                 </th>
                 <th>Action</th>
             </tr>
-            
+
             @foreach (var item in Model.ParticipantList)
             {
                 <tr>
@@ -146,10 +138,8 @@
         </table>
     </div>
 
+    @section Scripts
+    {
+        <script src="~/Scripts/AppScript/ParticipantEntry/ParticipantDetail.js"></script>
+    }
 
-</div>
-    <script src="~/Scripts/jquery-1.9.1.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/AppScript/ParticipantEntry/ParticipantDetail.js"></script>
-</body>
-</html>
